@@ -1,3 +1,5 @@
+import 'google-fonts'
+
 const Tab = ({ id, text, onClick }) => {
   const handleClick = () => {
     console.log("clicked: " + id);
@@ -12,6 +14,7 @@ const Tab = ({ id, text, onClick }) => {
         fontWeight: "bold",
         cursor: "pointer",
         height: "100%",
+        fontFamily: "Roboto, sans-serif",
       }}
     >
       {text}

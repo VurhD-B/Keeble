@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const Menu = ({ menuVisible }) => {
-  const [visible, setVisibility] = useState("false");
 
   const hamburgerMenuStyle = {
     display: "flex",
@@ -23,10 +22,9 @@ const Menu = ({ menuVisible }) => {
     transition: "opacity 0.1s ease-in",
   };
 
-
   return (
     <div
-      className={`hamburgermenu ${visible ? "show" : "hidden"}`}
+      className={`hamburgermenu ${menuVisible ? "show" : "hidden"}`}
       style={hamburgerMenuStyle}
     >
       Peekaboo!
