@@ -2,7 +2,9 @@ import { GiAbstract012 } from "react-icons/gi";
 import { AiOutlineMenu } from "react-icons/ai";
 import NavMenu from "./NavMenu";
 import Menu from "../Hamburger Menu/Menu";
+import Icon from "./Icon";
 import { useState } from "react";
+import "google-fonts";
 
 const Navbar = ({ onClick }) => {
   const navbarStyle = {
@@ -11,12 +13,6 @@ const Navbar = ({ onClick }) => {
     background: "#a6b1e1",
     padding: "1.5em",
     width: "100%",
-  };
-
-  const iconStyle = {
-    size: "1.5em",
-    color: "purple",
-    cursor: "pointer",
   };
 
   const menuStyle = {
@@ -45,7 +41,7 @@ const Navbar = ({ onClick }) => {
     }
   };
 
-  const [showHamburgerMenu, setShowHamburgerMenu] = useState("false");
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
 
   const handleHamburgerMenuClick = () => {
     setShowHamburgerMenu(!showHamburgerMenu);
@@ -54,7 +50,7 @@ const Navbar = ({ onClick }) => {
   return (
     <>
       <nav className="navbar" style={navbarStyle}>
-        <GiAbstract012 id="icon" style={iconStyle} onClick={handleClick} />
+        <Icon onClick={handleClick}/>
         <span style={{ margin: "0 auto" }}>
           <NavMenu id="navmenu" onTabClick={handleClick} />
         </span>
