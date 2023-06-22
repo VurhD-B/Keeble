@@ -9,7 +9,7 @@ const Menu = ({ menuVisible }) => {
     top: "20%",
     right: 0,
     width: "25%",
-    height: "70%",
+    height: "100vh",
 
     backgroundColor: "#904c77",
     borderRadius: "10px 0 0 10px",
@@ -27,7 +27,7 @@ const Menu = ({ menuVisible }) => {
       className={`hamburgermenu ${menuVisible ? "show" : "hidden"}`}
       style={hamburgerMenuStyle}
     >
-      Peekaboo!
+      hamburger menu goes here if needed
     </div>
   );
 };
