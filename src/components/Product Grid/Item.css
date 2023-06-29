@@ -1,0 +1,8 @@
+.card {
+    border: 1px solid red;
+
+    width: 10em;
+    position: relative;
+    aspect-ratio: 1/1;
+
+}
