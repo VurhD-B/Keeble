@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
 import dummyImage from "../../images/dummy-image.jpg";
 
-const ProductItem = () => {
+const ProductItem = ({ product }) => {
   return (
     <div className="flex-shrink-0 w-[10em] h-full">
       <Card className="w-full h-full flex flex-col justify-center items-center">
@@ -16,21 +16,8 @@ const ProductItem = () => {
           title="dummy-image"
         />
         <CardContent>
-          <Typography>Full Size | 100%</Typography>
-          <Typography>
-            Traditional Keys
-            <br /> Function Keys
-            <br /> Arrow Keys
-            <br />
-            Full-Size Number Pad
-            <br />
-            <br />
-            Full Functionality
-            <br /> Good for data entry
-            <br />
-            <br />
-            Large, takes up space
-          </Typography>
+          <Typography>{product.name}</Typography>
+          <Typography>{product.description}</Typography>
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">

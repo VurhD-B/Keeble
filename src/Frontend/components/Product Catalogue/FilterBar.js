@@ -2,17 +2,17 @@ import { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
-const FilterBar = () => {
-  const [selected, setSelected] = useState([]);
+const FilterBar = ({ selected, handleSelection }) => {
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
-  const handleSelection = (filter) => {
-    const isSelected = selected.includes(filter);
+  const handleSelectedFilters = (filter) => {
+    const isSelected = selectedFilters.includes(filter);
     if (isSelected) {
-      setSelected(
-        selected.filter((selectedFilter) => selectedFilter !== filter)
+      setSelectedFilters(
+        selectedFilters.filter((selectedFilter) => selectedFilter !== filter)
       );
     } else {
-      setSelected([...selected, filter]);
+      setSelectedFilters([...selectedFilters, filter]);
     }
   };
 
@@ -25,17 +25,17 @@ const FilterBar = () => {
       />
       <Chip
         label="PCB"
-        color={(selected.includes("pcb") ? "primary" : "default")}
+        color={selected.includes("pcb") ? "primary" : "default"}
         onClick={() => handleSelection("pcb")}
       />
       <Chip
         label="Switches"
-        color={(selected.includes("switches") ? "primary" : "default")}
+        color={selected.includes("switches") ? "primary" : "default"}
         onClick={() => handleSelection("switches")}
       />
       <Chip
         label="Keycaps"
-        color={(selected.includes("keycaps") ? "primary" : "default")}
+        color={selected.includes("keycaps") ? "primary" : "default"}
         onClick={() => handleSelection("keycaps")}
       />
       <Chip
