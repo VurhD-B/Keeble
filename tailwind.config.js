@@ -9,11 +9,12 @@ module.exports = {
       'pale-lilac': '#DCD6F7',
       'carolina-blue': '#A6B1E1',
       'mulled-wine': '#424874',
-      'magenta-haze': '#904C77'
+      'magenta-haze': '#904C77',
     },
     fontFamily: {
       'pacifico': ['Pacifico', 'cursive'],
-      'roboto': ['Roboto', 'sans-serif']
+      'roboto': ['Roboto', 'sans-serif'],
+      
     }
   },
   plugins: [],
