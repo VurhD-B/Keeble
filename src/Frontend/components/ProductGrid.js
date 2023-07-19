@@ -8,6 +8,7 @@ import { Button, CardActions } from "@mui/material";
 import dummyImage from "../../images/dummy-image.jpg";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import AssemblyGrid from "./AssemblyGrid";
 
 const products = [
   {
@@ -34,7 +35,7 @@ const products = [
 
 const FilterBar = ({ selected, handleSelection }) => {
   return (
-    <Stack direction="row">
+    <Stack direction="row" alignItems="center" spacing="2">
       <Chip
         label="Base"
         color={selected.includes("base") ? "primary" : "default"}
@@ -86,36 +87,51 @@ const ProductGrid = () => {
   };
 
   return (
-    <div>
-      <FilterBar selected={selected} handleSelection={handleSelection} />
-      <div className="flex flex-wrap space-x-2 p-2 rounded-md overflow-x-auto place-items-center">
-        <Grid>
-          <div className="flex flex-nowrap space-x-2 overflow-x-auto h-full min-h-[80vh]">
-            {filterItems(products).map((product) => (
-              <div className="flex-shrink-0 w-[10em] h-full">
-                <Card className="w-full h-full flex flex-col justify-center items-center text-center">
-                  <CardMedia
-                    component="img"
-                    sx={{ height: 140 }}
-                    image={dummyImage}
-                    title="dummy-image"
-                  />
-                  <CardContent>
-                    <Typography variant="h6">{product.name}</Typography>
-                    {product.description.split("\n").map((line) => (
-                      <Typography key={line.id}>{line}</Typography>
-                    ))}
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      Add to Assembly Area
-                    </Button>
-                  </CardActions>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </Grid>
+    <div className="flex flex-row justify-evenly">
+      <div className="ml-5 mb-3 border-spacing-1 bg-carolina-blue w-[50%] h-full overflow-x-auto rounded-md flex flex-col items-center justify-center">
+        {/* FilterBar */}
+        <div className="flex place-content-center mt-2">
+          <FilterBar selected={selected} handleSelection={handleSelection} />
+        </div>
+
+        {/* Product Grid */}
+        <div className="flex grow flex-wrap space-x-2 p-2 rounded-md overflow-x-auto place-items-center">
+          <Grid>
+            <div className="flex flex-nowrap space-x-2 overflow-x-auto h-full min-w-[50%] min-h-[80vh]">
+              {filterItems(products).map((product) => (
+                <div className="flex-shrink-0 w-[10em] h-full">
+                  <Card className="w-full h-full flex flex-col justify-center items-center text-center">
+                    <CardMedia
+                      component="img"
+                      sx={{ height: 140 }}
+                      image={dummyImage}
+                      title="dummy-image"
+                    />
+                    <CardContent>
+                      <Typography variant="h6">{product.name}</Typography>
+                      {product.description.split("\n").map((line) => (
+                        <Typography key={line.id}>{line}</Typography>
+                      ))}
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary">
+                        Add to Assembly Area
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </Grid>
+        </div>
+      </div>
+
+      {/* Assembly Grid */}
+      <div className="ml-10 mr-5 pt-5 border-spacing-1 inline-block h-full text-center">
+        <h2 className="mb-4">Assembly Area</h2>
+        <div className="bg-carolina-blue p-4 rounded-md inline-block">
+          <AssemblyGrid />
+        </div>
       </div>
     </div>
   );

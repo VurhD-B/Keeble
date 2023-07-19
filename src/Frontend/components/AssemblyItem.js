@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
-import dummyImage from "../../images/dummy-image.jpg";
+import dummyImage from "../images/dummy-image.jpg";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const AssemblyItem = () => {
