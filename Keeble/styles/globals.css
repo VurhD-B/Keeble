@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.login_btn {
+    @apply rounded-full border border-mulled-wine bg-mulled-wine py-1.5 px-5 text-lg
+        text-titan-white transition-all hover:bg-black;
+}
+
+.customise_btn {
+    @apply border border-mulled-wine bg-mulled-wine text-titan-white font-roboto text-2xl
+        pl-2 pr-2 pt-2 pb-2 rounded-2xl shadow-xl hover:shadow-none hover:bg-black transition-all;
+}
+
