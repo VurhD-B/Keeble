@@ -19,12 +19,6 @@ export default function Home() {
           Guide Page
         </button>
       </Link>
-      <Link href="/test">
-        <button className="customise_btn">
-          Test Page
-        </button>
-      </Link>
-      
     </section>
   )
 }
