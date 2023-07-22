@@ -12,9 +12,10 @@ const Add = () => {
         name: '',
         description: '',
         price: 0,
-        category: '',
-        link: '',
-        fileName: '',
+        category1: '',
+        category2: '',
+        productLink: '',
+        imageLink: '',
     });
 
     const addProduct = async (e) => {
@@ -29,9 +30,10 @@ const Add = () => {
                     name: product.name,
                     description: product.description,
                     price: product.price,
-                    category: product.category,
-                    link: product.link,
-                    fileName: product.fileName
+                    category1: product.category1,
+                    category2: product.category2,
+                    productLink: product.productLink,
+                    imageLink: product.imageLink,
                 })
             })
             if(response.ok){

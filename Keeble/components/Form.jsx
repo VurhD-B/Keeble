@@ -41,33 +41,45 @@ const Form = ({type, product, setProduct, submitting, handleSubmit}) => {
                 </label>
 
                 <label className="flex flex-col gap-2">
-                    <span className="font-bold">Product Category:</span>
+                    <span className="font-bold">Product Primary Category:</span>
                     <input 
-                        value={product.category} 
-                        onChange={(e) => setProduct({...product, category: e.target.value})} 
-                        placeholder="Enter the product category here..."
+                        value={product.category1} 
+                        onChange={(e) => setProduct({...product, category1: e.target.value})} 
+                        placeholder="Enter the primary category here..."
                         className="px-2 py-2 rounded-xl shadow-md"
                         required/>
                 </label>
 
                 <label className="flex flex-col gap-2">
-                    <span className="font-bold">Product Link:</span>
+                    <span className="font-bold">Product Secondary Category:</span>
                     <input 
-                        value={product.link} 
-                        onChange={(e) => setProduct({...product, link: e.target.value})} 
-                        placeholder="Enter the product link here..."
+                        value={product.category2} 
+                        onChange={(e) => setProduct({...product, category2: e.target.value})} 
+                        placeholder="Enter the secondary category here..."
                         className="px-2 py-2 rounded-xl shadow-md"
                         required/>
                 </label>
 
                 <label className="flex flex-col gap-2">
-                    <span className="font-bold">Product File Name: 
-                    <span className="font-light">(Do not mispell and also add .png etc)</span>
+                    <span className="font-bold">Product Link: 
+                    <span className="font-light">(Add the link to the site that sells it)</span>
                     </span>
                     <input 
-                        value={product.fileName} 
-                        onChange={(e) => setProduct({...product, fileName: e.target.value})} 
-                        placeholder="Enter the product file name here..."
+                        value={product.productLink} 
+                        onChange={(e) => setProduct({...product, productLink: e.target.value})} 
+                        placeholder="Enter the product link name here..."
+                        className="px-2 py-2 rounded-xl shadow-md"
+                        required/>
+                </label>
+
+                <label className="flex flex-col gap-2">
+                    <span className="font-bold">Image Link: 
+                    <span className="font-light">(Add the link to s3 URL where image is stored)</span>
+                    </span>
+                    <input 
+                        value={product.imageLink} 
+                        onChange={(e) => setProduct({...product, imageLink: e.target.value})} 
+                        placeholder="Enter the Image link name here..."
                         className="px-2 py-2 rounded-xl shadow-md"
                         required/>
                 </label>

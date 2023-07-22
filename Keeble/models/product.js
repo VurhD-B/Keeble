@@ -12,16 +12,21 @@ const ProductSchema = new Schema({
         type: Number,
         required: [true, 'Please enter the price of the product'],
     },
-    category: {
+    category1: {
         type: String,
         required: [true, 'Please enter the category of the product'],
     },
-    link: {
+    category2: {
         type: String,
     },
-    fileName: {
+    productLink: {
         type: String,
+        required: [true, 'Please provide the link to the purchase page'],
     },
+    imageLink: {
+        type: String,
+        required: [true, 'Please provide the link to the image of the product'],
+    }
 });
 
 const Product = models.Product || model('Product', ProductSchema);
