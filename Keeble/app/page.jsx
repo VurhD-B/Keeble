@@ -11,7 +11,7 @@ export default function Home() {
       </Link>
       <Link href="/add">
         <button className="customise_btn">
-          Please add products UwU
+          Add Products
         </button>
       </Link>
       <Link href="/guide">
