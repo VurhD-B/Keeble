@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Form from "@components/Form";
+import ProductForm from "@components/Forms/ProductForm";
 
 const Add = () => {
     const router = useRouter();
@@ -48,7 +48,7 @@ const Add = () => {
     }
 
     return (
-        <Form 
+        <ProductForm 
             type="Add"
             product={product}
             setProduct={setProduct}
