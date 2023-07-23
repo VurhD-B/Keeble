@@ -1,11 +1,7 @@
-'use client';
-
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+
 
 export default function Home() {
-  const { data:session } = useSession();
-
   return (
     <section className="flex justify-center items-center gap-4">
       <Link href="/build">
@@ -23,17 +19,6 @@ export default function Home() {
           Guide Page
         </button>
       </Link>
-      {session?.user ? 
-      (
-        <Link href="/posts">
-          <button className="customise_btn">
-            Posts Page
-          </button>
-        </Link>
-      ) : (
-        <>
-        </>
-      )}
     </section>
   )
 }
