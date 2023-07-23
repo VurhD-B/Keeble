@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 
-const Build = () => {
+const ProductBuild = () => {
     const [products, setProducts] = useState([]);
 
     // Fetching the products from DB:
@@ -16,9 +16,8 @@ const Build = () => {
 
     return (
         <div>
-
         </div>
     )
 }
 
-export default Build;
+export default ProductBuild;

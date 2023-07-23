@@ -7,7 +7,7 @@ export default function Home() {
   const { data:session } = useSession();
   return (
     <section className="flex justify-center items-center gap-4">
-      <Link href="/build">
+      <Link href="/productbuild">
         <button className="customise_btn ">
           Customise your own keyboard!
         </button>
