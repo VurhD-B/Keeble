@@ -584,17 +584,26 @@ video {
 .mt-10{
   margin-top: 2.5rem;
 }
+.mt-3{
+  margin-top: 0.75rem;
+}
 .mt-5{
   margin-top: 1.25rem;
 }
 .flex{
   display: flex;
 }
+.w-\[50\%\]{
+  width: 50%;
+}
 .w-full{
   width: 100%;
 }
 .max-w-2xl{
   max-width: 42rem;
+}
+.max-w-md{
+  max-width: 28rem;
 }
 .flex-row{
   flex-direction: row;
@@ -689,6 +698,10 @@ video {
 }
 .font-light{
   font-weight: 300;
+}
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(66 66 66 / var(--tw-text-opacity));
 }
 .text-mulled-wine{
   --tw-text-opacity: 1;
