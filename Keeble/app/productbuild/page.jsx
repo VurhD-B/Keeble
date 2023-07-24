@@ -73,32 +73,30 @@ const FilterBar = ({ selected, handleSelection }) => {
 
 const AssemblyItem = ({ product }) => {
     const handleBuy = () => {
-      window.alert("redirected to seller");
+        window.alert("redirected to seller");
     };
-  
     return (
-      <div className="flex flex-row items-center">
-        <Card className="w-full h-[140px] flex flex-row justify-center items-center text-center">
-          <CardMedia
-            component="img"
-            sx={{ height: 140 }}
-            image={product.imageLink}
-            title="dummy-image"
-          />
-          <div className="flex flex-col items-center text-center">
-            <CardContent>
-              <Typography variant="h7">{product.name}</Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" color="primary" onClick={handleBuy}>
-                Buy One
-              </Button>
-            </CardActions>
-          </div>
-        </Card>
-      </div>
-    );
-  };
+        <div className="flex flex-row items-center">
+            <Card className="w-full h-[140px] flex flex-row justify-center items-center text-center">
+            <CardMedia
+                component="img"
+                sx={{ height: 140 }}
+                image={product.imageLink}
+                title="dummy-image"
+            />
+            <div className="flex flex-col items-center text-center">
+                <CardContent>
+                <Typography variant="h7">{product.name}</Typography>
+                </CardContent>
+                <CardActions>
+                <Button size="small" color="primary" onClick={handleBuy}>
+                    Buy One
+                </Button>
+                </CardActions>
+            </div>
+            </Card>
+        </div>
+    );};
 
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
