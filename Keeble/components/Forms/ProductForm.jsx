@@ -1,9 +1,53 @@
 import Link from "next/link";
 import "@uploadthing/react/styles.css";
-
+import { useState, useEffect } from "react";
 import { UploadButton } from "/utils/uploadthing";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 
-const ProductForm = ({ type, product, setProduct, submitting, handleSubmit }) => {
+const FilterBar = ({ categorySelected, handleSelection }) => {
+    return (
+        <Stack direction="row" alignItems="center" spacing="2">
+            <Chip
+                label="Base"
+                color={categorySelected.includes("base") ? "primary" : "default"}
+                onClick={() => handleSelection("base")}
+            />
+            <Chip
+                label="PCB"
+                color={categorySelected.includes("pcb") ? "primary" : "default"}
+                onClick={() => handleSelection("pcb")}
+            />
+            <Chip
+                label="Switches"
+                color={categorySelected.includes("switches") ? "primary" : "default"}
+                onClick={() => handleSelection("switches")}
+            />
+            <Chip
+                label="Keycaps"
+                color={categorySelected.includes("keycaps") ? "primary" : "default"}
+                onClick={() => handleSelection("keycaps")}
+            />
+            <Chip
+                label="Accessories"
+                color={categorySelected.includes("accessories") ? "primary" : "default"}
+                onClick={() => handleSelection("accessories")}
+            />
+        </Stack>
+    );
+};
+
+const ProductForm = ({ type, product, setProduct, submitting, handleSubmit, categorySelected, setcategorySelected }) => {
+    const handleSelection = (filter) => {
+        const isSelected = categorySelected.includes(filter);
+        if (isSelected) {
+            setcategorySelected(
+                categorySelected.filter((selectedFilter) => selectedFilter !== filter)
+            );
+        } else {
+            setcategorySelected([...categorySelected, filter]);
+        }
+    };
     return (
         <section className="w-50 flex-start flex-col mx-8 my-4 bg-carolina-blue rounded-xl px-10 py-6">
             <h1 className="bold text-left">
@@ -44,6 +88,11 @@ const ProductForm = ({ type, product, setProduct, submitting, handleSubmit }) =>
 
                 <label className="flex flex-col gap-2">
                     <span className="font-bold">Product Primary Category:</span>
+                    {/* FilterBar */}
+                    <div className="flex place-content-center mt-2">
+                        <FilterBar categorySelected={categorySelected} handleSelection={handleSelection} />
+                    </div>
+
                     <input
                         value={product.category1}
                         onChange={(e) => setProduct({ ...product, category1: e.target.value })}

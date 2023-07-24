@@ -17,6 +17,7 @@ const Add = () => {
         productLink: '',
         imageLink: '',
     });
+    const [categorySelected, setcategorySelected] = useState([]);
 
     const addProduct = async (e) => {
         e.preventDefault();
@@ -54,6 +55,8 @@ const Add = () => {
             setProduct={setProduct}
             submitting={submitting}
             handleSubmit={addProduct}
+            categorySelected={categorySelected}
+            setcategorySelected={setcategorySelected}
         />
     )
 }
