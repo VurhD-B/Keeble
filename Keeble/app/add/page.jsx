@@ -12,10 +12,10 @@ const Add = () => {
         name: '',
         description: '',
         price: 0,
-        category1: '',
-        category2: '',
+        categories: [],
         productLink: '',
         imageLink: '',
+        review: []
     });
     const [categorySelected, setcategorySelected] = useState([]);
 
@@ -31,10 +31,10 @@ const Add = () => {
                     name: product.name,
                     description: product.description,
                     price: product.price,
-                    category1: product.category1,
-                    category2: product.category2,
+                    categories: product.categories,
                     productLink: product.productLink,
                     imageLink: product.imageLink,
+                    review: product.review
                 })
             })
             if(response.ok){

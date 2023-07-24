@@ -94,19 +94,9 @@ const ProductForm = ({ type, product, setProduct, submitting, handleSubmit, cate
                     </div>
 
                     <input
-                        value={product.category1}
-                        onChange={(e) => setProduct({ ...product, category1: e.target.value })}
+                        value={product.categories}
+                        onChange={(e) => setProduct({ ...product, categories: e.target.value })}
                         placeholder="Enter the primary category here..."
-                        className="px-2 py-2 rounded-xl shadow-md"
-                        required />
-                </label>
-
-                <label className="flex flex-col gap-2">
-                    <span className="font-bold">Product Secondary Category:</span>
-                    <input
-                        value={product.category2}
-                        onChange={(e) => setProduct({ ...product, category2: e.target.value })}
-                        placeholder="Enter the secondary category here..."
                         className="px-2 py-2 rounded-xl shadow-md"
                         required />
                 </label>

@@ -12,12 +12,8 @@ const ProductSchema = new Schema({
         type: Number,
         required: [true, 'Please enter the price of the product'],
     },
-    category1: {
-        type: String,
-        required: [true, 'Please enter the category of the product'],
-    },
-    category2: {
-        type: String,
+    categories: {
+        type: Array,
     },
     productLink: {
         type: String,
@@ -26,7 +22,19 @@ const ProductSchema = new Schema({
     imageLink: {
         type: String,
         required: [true, 'Please provide the link to the image of the product'],
-    }
+    },
+    review: [{
+        creator: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        title: {
+            type: String,
+        },
+        body: {
+            type: String,
+        },
+    }]
 });
 
 const Product = models.Product || model('Product', ProductSchema);
