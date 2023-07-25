@@ -87,15 +87,14 @@ const ProductForm = ({ type, product, setProduct, submitting, handleSubmit, cate
                 </label>
 
                 <label className="flex flex-col gap-2">
-                    <span className="font-bold">Product Primary Category:</span>
+                    <span className="font-bold">Product Category:</span>
                     {/* FilterBar */}
                     <div className="flex place-content-center mt-2">
                         <FilterBar categorySelected={categorySelected} handleSelection={handleSelection} />
                     </div>
 
                     <input
-                        value={product.categories}
-                        onChange={(e) => setProduct({ ...product, categories: e.target.value })}
+                        value={categorySelected}
                         placeholder="Enter the primary category here..."
                         className="px-2 py-2 rounded-xl shadow-md"
                         required />

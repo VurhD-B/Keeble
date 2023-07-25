@@ -31,7 +31,7 @@ const Add = () => {
                     name: product.name,
                     description: product.description,
                     price: product.price,
-                    categories: product.categories,
+                    categories: categorySelected,
                     productLink: product.productLink,
                     imageLink: product.imageLink,
                     review: product.review

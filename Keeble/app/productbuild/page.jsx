@@ -10,35 +10,6 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-const data = {
-    name: {
-        type: String,
-        required: [true, 'Please enter the product name'],
-    },
-    description: {
-        type: String,
-    },
-    price: {
-        type: Number,
-        required: [true, 'Please enter the price of the product'],
-    },
-    category1: {
-        type: String,
-        required: [true, 'Please enter the category of the product'],
-    },
-    category2: {
-        type: String,
-    },
-    productLink: {
-        type: String,
-        required: [true, 'Please provide the link to the purchase page'],
-    },
-    imageLink: {
-        type: String,
-        required: [true, 'Please provide the link to the image of the product'],
-    }
-}
-
 const FilterBar = ({ selected, handleSelection }) => {
     return (
         <Stack direction="row" alignItems="center" spacing="2">
