@@ -98,7 +98,7 @@ const ProductBuild = () => {
         if (selected.length === 0) {
             return items;
         }
-        return items.filter((product) => selected.includes(product.type));
+        return items.filter((product) => selected.some(r=> product.categories.includes(r)));
     };
 
     // Fetching the products from DB:
@@ -116,7 +116,7 @@ const ProductBuild = () => {
 
     return (
         <div className="flex flex-row justify-evenly">
-            <div className="ml-5 mb-3 border-spacing-1 bg-carolina-blue w-[700px] h-full overflow-x-auto rounded-md flex flex-col items-center justify-center">
+            <div className="ml-5 mb-3 border-spacing-1 bg-carolina-blue h-full overflow-x-auto rounded-md flex flex-col items-center justify-center">
                 {/* FilterBar */}
                 <div className="flex place-content-center mt-2">
                     <FilterBar selected={selected} handleSelection={handleSelection} />
@@ -126,8 +126,8 @@ const ProductBuild = () => {
                 {/* Product Grid */}
                 <div className="flex grow flex-wrap space-x-2 p-2 rounded-md overflow-x-auto place-items-center">
                     <Grid>
-                        <div className="flex flex-nowrap flex-none space-x-2 overflow-x-auto h-full min-w-[50%] min-h-[80vh]">
-                            {products.map((product) => (
+                        <div className="flex flex-nowrap flex-row flex-none space-x-2 overflow-x-auto h-full min-w-[50%] min-h-[80vh]">
+                            {filterItems(products).map((product) => (
                                 <div className="flex-shrink-0 w-[10em] h-full" key={product._id}>
                                     <Card className="w-full h-full flex flex-col justify-center items-center text-left">
                                         <CardMedia
