@@ -14,8 +14,7 @@ const Add = () => {
         price: 0,
         categories: [],
         productLink: '',
-        imageLink: '',
-        review: []
+        imageLink: ''
     });
     const [categorySelected, setcategorySelected] = useState([]);
 
@@ -34,7 +33,6 @@ const Add = () => {
                     categories: categorySelected,
                     productLink: product.productLink,
                     imageLink: product.imageLink,
-                    review: product.review
                 })
             })
             if(response.ok){

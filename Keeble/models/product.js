@@ -23,18 +23,6 @@ const ProductSchema = new Schema({
         type: String,
         required: [true, 'Please provide the link to the image of the product'],
     },
-    review: [{
-        creator: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
-        title: {
-            type: String,
-        },
-        body: {
-            type: String,
-        },
-    }]
 });
 
 const Product = models.Product || model('Product', ProductSchema);
