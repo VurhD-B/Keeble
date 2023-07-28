@@ -12,7 +12,7 @@ export const POST = async(req, res) => {
             user, product, text, rating, createdAt
         });
         await newReview.save();
-        return new Response(JSON.stringify(newReview), {status: 201});
+        return new Response(JSON.stringify(newReview, {status: 201}));
     } catch(error) {
         return new Response('Failed to create a review', {status: 500});
     }
