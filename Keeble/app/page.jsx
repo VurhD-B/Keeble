@@ -22,6 +22,11 @@ export default function Home() {
           Guide Page
         </button>
       </Link>
+      <Link href="/productlist">
+        <button className="customise_btn">
+          Product List Page
+        </button>
+      </Link>
       {session?.user ?
       (
         <Link href="/posts">
