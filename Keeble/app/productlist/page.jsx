@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const ProductList = () => {
 
@@ -31,6 +32,7 @@ const ProductList = () => {
                         <div className="flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit">
                             <div className="flex justify-between items-start gap-5">
                                 <Link href={`/productlist/${product._id}`}>
+                                    <Image src={product.imageLink} width={145} height={145} />
                                     <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
                                         <div className="flex flex-col">
                                             <h3 className="font-roboto text-sm">
