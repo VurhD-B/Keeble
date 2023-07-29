@@ -13,7 +13,6 @@ const ProductList = () => {
         const fetchProducts = async () => {
             const response = await fetch('/api/products');
             const data = await response.json();
-            await console.log(data);
             setProducts(data);
 
         }
