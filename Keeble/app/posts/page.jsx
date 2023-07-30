@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";   
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const Feed = () => {
+    const { data:session } = useSession();
 
     // Fetching all the posts from API Endpoint
     const [allPosts, setallPosts] = useState([]);
@@ -12,7 +14,6 @@ const Feed = () => {
     const fetchPosts = async () => {
         const response = await fetch("api/posts");
         const data = await response.json();
-
         setallPosts(data);
     };
 
@@ -53,6 +54,16 @@ const Feed = () => {
                             <p className="font-roboto text-sm text-mulled-wine cursor-pointer">
                                 {post.tag}
                             </p>
+                            {session?.user.email === post.creator.email ? (
+                                <div>
+                                    <Link href={`/posts/edit/${post._id}`}>
+                                        <button className="login_btn mt-4">Edit Post</button>
+                                    </Link>
+                                </div>
+                            ):(
+                                <>
+                                </>
+                            )}
                         </div>
                     )
                 })}

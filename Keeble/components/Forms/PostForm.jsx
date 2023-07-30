@@ -7,7 +7,7 @@ const PostForm = ({type, post, setPost, submitting, handleSubmit}) => {
                 <span className="font-roboto-800 font-extrabold text-3xl">{type} Post</span>
             </h1>
             <p className="text-left max-w-md text-black mt-3">
-                Create and share reviews, tips or recommendations through posts for other users.
+                {type} and share reviews, tips or recommendations through posts for other users.
             </p>
             <form onSubmit={handleSubmit} className="mt-10 w-full max-w-2xl flex flex-col gap-5">
 
