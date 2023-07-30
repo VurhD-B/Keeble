@@ -1,5 +1,6 @@
 import { connectToDB } from "@utils/database";
 import Post from "@models/post";
+import { connect } from "mongoose";
 
 export const GET = async (req, { params }) => {
     try {
@@ -38,4 +39,14 @@ export const PATCH = async (req, { params }) => {
     } catch (error) {
         return new Response('Failed to update post', {status: 500});
     }
+}
+
+export const DELETE = async (req, { params }) => {
+    try {
+        await connectToDB();
+        await Post.findByIdAndRemove(params.id);
+        return new Response('Sucessfully deleted post', {status : 200});
+    } catch (error) {
+        return new Response('Failed to delete post', {status: 500});
+    }   
 }
