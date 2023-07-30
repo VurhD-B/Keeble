@@ -67,9 +67,6 @@ const ProductPage = ({ params }) => {
                             <p className="mt-3"> Posted at: {review.createdAt}</p>
                             {session?.user.email === review.user.email ? (
                                 <div>
-                                    <Link href="/edit-review">
-                                        <button className="login_btn mt-3">Edit</button>
-                                    </Link>
                                 </div>
                             ): (
                                 <>
