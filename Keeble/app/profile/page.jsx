@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Profile = () => {
     const { data:session } = useSession();
@@ -20,9 +21,15 @@ const Profile = () => {
                 <h1>{session?.user.name}</h1>
             </div>
             <div className="flex justify-center align-center gap-3">
-                <button className="login_btn shadow-2xl">My Posts</button>
-                <button className="login_btn shadow-2xl">My Reviews</button>
-                <button className="login_btn shadow-2xl">My Builds</button>
+                <Link href="/profile/posts">
+                    <button className="login_btn shadow-2xl">My Posts</button>
+                </Link>
+                <Link href="/profile/reviews">
+                    <button className="login_btn shadow-2xl">My Reviews</button>
+                </Link>
+                <Link href="/profile/builds">
+                    <button className="login_btn shadow-2xl">My Builds</button>
+                </Link>
             </div>
         </div>
     )
