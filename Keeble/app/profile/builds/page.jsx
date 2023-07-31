@@ -17,7 +17,7 @@ const MyBuilds = () => {
             setMyBuilds(data);
         }
         fetchMyBuilds();
-    }, [email]);
+    }, [email]); // Builds are in myBuilds
 
 
     return (
