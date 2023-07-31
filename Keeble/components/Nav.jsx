@@ -38,13 +38,15 @@ const Nav = () => {
                     <button type="button" className=" login_btn " onClick={signOut}>
                         Sign Out
                     </button>
-                    <Image 
-                        src={session?.user.image} 
-                        alt='profile-image' 
-                        width={45} 
-                        height={35} 
-                        className='ml-2 rounded-full'
-                    />
+                    <Link href="/profile">
+                        <Image 
+                            src={session?.user.image} 
+                            alt='profile-image' 
+                            width={45} 
+                            height={35} 
+                            className='ml-2 rounded-full cursor-pointer'
+                        />
+                    </Link>
                 </div>
             ): /* If user is not logged in (view) */(
                 <>
