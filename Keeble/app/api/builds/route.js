@@ -1,4 +1,5 @@
 import { connectToDB } from "@utils/database";
+import Product from "@models/product";
 import Build from "@models/build";
 
 export const GET = async (req) => {
