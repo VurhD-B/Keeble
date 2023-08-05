@@ -19,6 +19,7 @@ module.exports = {
       'background-black-nav': '#121212',
       'text-white': '#DDDDDD',
       'button-grey': '#565656',
+      'box-gray': '#d9d9d9',
     },
     fontFamily: {
       'pacifico': ['Pacifico', 'cursive'],
