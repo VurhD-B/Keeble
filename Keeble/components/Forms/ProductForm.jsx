@@ -6,163 +6,20 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
 const FilterBar = ({ categorySelected, handleSelection }) => {
+    const categories = ["Base", "100%", "TKL", "75%", "65%", "60%", "Switches", "Tactile", "Linear", "Clicky", "3-pins", "5-pins", 
+                        "Keycaps", "PBT", "ABS", "Doubleshot", "Pudding", "OEM", "Cherry", "DSA", "Accessories", "Cable", "Foam", "Lubricant",
+                        "PCB", "Carrying Case", "Pullers", "Others", "$", "$$", "$$$"];
     return (
         <Stack direction="row" useFlexGap flexWrap="wrap" alignItems="center" spacing="2" justifyContent='flex-start'> 
-            <Chip
-                label="Base"
-                color={categorySelected.includes("Base") ? "primary" : "default"}
-                onClick={() => handleSelection("Base")}
-            />
-            <Chip
-                label="100%"
-                color={categorySelected.includes("100%") ? "primary" : "default"}
-                onClick={() => handleSelection("100%")}
-            />
-            <Chip
-                label="TKL"
-                color={categorySelected.includes("TKL") ? "primary" : "default"}
-                onClick={() => handleSelection("TKL")}
-            />
-            <Chip
-                label="75%"
-                color={categorySelected.includes("75%") ? "primary" : "default"}
-                onClick={() => handleSelection("75%")}
-            />
-            <Chip
-                label="65%"
-                color={categorySelected.includes("65%") ? "primary" : "default"}
-                onClick={() => handleSelection("65%")}
-            />
-            <Chip
-                label="60%"
-                color={categorySelected.includes("60%") ? "primary" : "default"}
-                onClick={() => handleSelection("60%")}
-            />
-            <Chip
-                label="Switches"
-                color={categorySelected.includes("Switches") ? "primary" : "default"}
-                onClick={() => handleSelection("Switches")}
-            />
-            <Chip
-                label="Tactile"
-                color={categorySelected.includes("Tactile") ? "primary" : "default"}
-                onClick={() => handleSelection("Tactile")}
-            />
-            <Chip
-                label="Linear"
-                color={categorySelected.includes("Linear") ? "primary" : "default"}
-                onClick={() => handleSelection("Linear")}
-            />
-            <Chip
-                label="Clicky"
-                color={categorySelected.includes("Clicky") ? "primary" : "default"}
-                onClick={() => handleSelection("Clicky")}
-            />
-            <Chip
-                label="3-pins"
-                color={categorySelected.includes("3-pins") ? "primary" : "default"}
-                onClick={() => handleSelection("3-pins")}
-            />
-            <Chip
-                label="5-pins"
-                color={categorySelected.includes("5-pins") ? "primary" : "default"}
-                onClick={() => handleSelection("5-pins")}
-            />
-            <Chip
-                label="Keycaps"
-                color={categorySelected.includes("Keycaps") ? "primary" : "default"}
-                onClick={() => handleSelection("Keycaps")}
-            />
-            <Chip
-                label="ABS"
-                color={categorySelected.includes("ABS") ? "primary" : "default"}
-                onClick={() => handleSelection("ABS")}
-            />
-            <Chip
-                label="PBT"
-                color={categorySelected.includes("PBT") ? "primary" : "default"}
-                onClick={() => handleSelection("PBT")}
-            />
-            <Chip
-                label="Doubleshot"
-                color={categorySelected.includes("Doubleshot") ? "primary" : "default"}
-                onClick={() => handleSelection("Doubleshot")}
-            />
-            <Chip
-                label="Pudding"
-                color={categorySelected.includes("Pudding") ? "primary" : "default"}
-                onClick={() => handleSelection("Pudding")}
-            />
-            <Chip
-                label="OEM"
-                color={categorySelected.includes("OEM") ? "primary" : "default"}
-                onClick={() => handleSelection("OEM")}
-            />
-            <Chip
-                label="Cherry"
-                color={categorySelected.includes("Cherry") ? "primary" : "default"}
-                onClick={() => handleSelection("Cherry")}
-            />
-            <Chip
-                label="DSA"
-                color={categorySelected.includes("DSA") ? "primary" : "default"}
-                onClick={() => handleSelection("DSA")}
-            />
-            <Chip
-                label="Accessories"
-                color={categorySelected.includes("accessories") ? "primary" : "default"}
-                onClick={() => handleSelection("accessories")}
-            />
-            <Chip
-                label="Cable"
-                color={categorySelected.includes("Cable") ? "primary" : "default"}
-                onClick={() => handleSelection("Cable")}
-            />
-            <Chip
-                label="Foam"
-                color={categorySelected.includes("Foam") ? "primary" : "default"}
-                onClick={() => handleSelection("Foam")}
-            />
-            <Chip
-                label="Lubricant"
-                color={categorySelected.includes("Lubricant") ? "primary" : "default"}
-                onClick={() => handleSelection("Lubricant")}
-            />
-            <Chip
-                label="PCB"
-                color={categorySelected.includes("PCB") ? "primary" : "default"}
-                onClick={() => handleSelection("PCB")}
-            />
-            <Chip
-                label="Carrying Case"
-                color={categorySelected.includes("Carrying Case") ? "primary" : "default"}
-                onClick={() => handleSelection("Carrying Case")}
-            />
-            <Chip
-                label="Pullers"
-                color={categorySelected.includes("Pullers") ? "primary" : "default"}
-                onClick={() => handleSelection("Pullers")}
-            />
-            <Chip
-                label="Others"
-                color={categorySelected.includes("Others") ? "primary" : "default"}
-                onClick={() => handleSelection("Others")}
-            />
-            <Chip
-                label="$"
-                color={categorySelected.includes("$") ? "primary" : "default"}
-                onClick={() => handleSelection("$")}
-            />
-            <Chip
-                label="$$"
-                color={categorySelected.includes("$$") ? "primary" : "default"}
-                onClick={() => handleSelection("$$")}
-            />
-            <Chip
-                label="$$$"
-                color={categorySelected.includes("$$$") ? "primary" : "default"}
-                onClick={() => handleSelection("$$$")}
-            />
+            {categories.map(category => {
+                return (
+                    <Chip
+                        label={category}
+                        color={categorySelected.includes(category) ? "primary" : "default"}
+                        onClick={() => handleSelection(category)}
+                    />
+                )
+            })}
         </Stack>
     );
 };
