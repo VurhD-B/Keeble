@@ -16,6 +16,8 @@ module.exports = {
       'magenta-haze': '#904C77',
       'black': '#424242',
       'background-black': '#343434',
+      'grid-black': '#4f4f4f',
+      'card-black': '#5f5f5f',
       'background-black-nav': '#121212',
       'text-white': '#DDDDDD',
       'button-grey': '#565656',

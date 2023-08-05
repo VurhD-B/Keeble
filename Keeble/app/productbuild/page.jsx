@@ -8,11 +8,11 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import ProductContainer from "@components/ProductContainer";
 
 const FilterBar = ({ selected, handleSelection }) => {
     return (
-        <Stack direction="row" alignItems="center" spacing="2">
+        <Stack className="justify-evenly mt-1" direction="row" alignItems="center" spacing="2">
             <Chip
                 label="Base"
                 color={selected.includes("base") ? "primary" : "default"}
@@ -46,6 +46,7 @@ const AssemblyItem = ({ product }) => {
     const handleBuy = () => {
         window.alert("redirected to seller");
     };
+
     return (
         <div className="flex flex-row items-center">
             <Card className="w-full h-[140px] flex flex-row justify-center items-center text-center">
@@ -111,82 +112,33 @@ const ProductBuild = () => {
 
         }
         fetchProducts();
+console.log(products);
 
     }, []); // The products should be in the products variable
 
-    return (
-        <div className="flex flex-row justify-evenly">
-            <div className="ml-5 mb-3 border-spacing-1 bg-carolina-blue h-full overflow-x-auto rounded-md flex flex-col items-center justify-center">
-                {/* FilterBar */}
-                <div className="flex place-content-center mt-2">
-                    <FilterBar selected={selected} handleSelection={handleSelection} />
-                </div>
-
-
-                {/* Product Grid */}
-                <div className="flex grow flex-wrap space-x-2 p-2 rounded-md overflow-x-auto place-items-center">
-                    <Grid>
-                        <div className="flex flex-nowrap flex-row flex-none space-x-2 overflow-x-auto h-full min-w-[50%] min-h-[80vh]">
-                            {filterItems(products).map((product) => (
-                                <div className="flex-shrink-0 w-[10em] h-full" key={product._id}>
-                                    <Card className="w-full h-full flex flex-col justify-center items-center text-left">
-                                        <CardMedia
-                                            component="img"
-                                            sx={{ height: 140 }}
-                                            image={product.imageLink}
-                                            title="dummy-image"
-                                        />
-                                        <CardContent>
-                                            <Typography variant="h6">{product.name}</Typography>
-                                            {product.description.split("\n").map((line) => (
-                                                <Typography key={line.id}>{line}</Typography>
-                                            ))}
-                                        </CardContent>
-                                        <CardActions>
-                                            <Button
-                                                size="small"
-                                                color={
-                                                    product.addedassembly ? "secondary" : "primary"
-                                                }
-                                                onClick={() => handleAddToAssembly(product)
-                                                }
-                                            >
-                                                {product.addedassembly
-                                                    ? "Added"
-                                                    : "Add"}
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </div>
-                            ))}
-                        </div>
-                    </Grid>
-                </div>
-            </div>
-
-            {/* Assembly Grid */}
-            <div className="ml-10 mr-5 pt-5 border-spacing-1 inline-block h-full text-center">
-                <h2 className="mb-4">Assembly Area</h2>
-                <div className="bg-carolina-blue p-4 w-[470px] h-[472px] rounded-md inline-block">
-                    {products.map((product, index) => {
-                        if (product.addedassembly) {
-                        return (
-                            <div className="mb-3 flex flex-grow flex-row items-center">
-                                <AssemblyItem
-                                    product={product}
-                                // onDelete={() => handleDelete(product.id)}
-                                />
-                                <RemoveCircleOutlineIcon
-                                    className="ml-2 cursor-pointer"
-                                    onClick={() => handleAddToAssembly(product)}
-                                />
-                            </div>
-                        );
-                        }
+    const ProductGrid = ({ text }) => {
+        return (
+            <div className="flex flex-col bg-card-black w-[full] min-h-[300px] m-2 p-2 text-[#d9d9d9] rounded shadow-lg">
+                {text}
+                <FilterBar selected={selected} handleSelection={handleSelection} />
+                <div>
+                    {products.map(product => {
+                        return (<ProductContainer product={product}/>)
                     })}
                 </div>
             </div>
-        </div>
+        )
+    }
+
+    return (
+        <>
+            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
+                <ProductGrid text="Step 1: Choose a base"/>
+                <ProductGrid text="Step 2: Choose a switch"/>
+                <ProductGrid text="Step 3: Choose keycaps"/>
+                <ProductGrid text="Optional: Choose accessories"/>
+            </div>
+        </>
     )
 }
 
