@@ -15,6 +15,9 @@ module.exports = {
       'mulled-wine': '#424874',
       'magenta-haze': '#904C77',
       'black': '#424242',
+      'background-black': '#343434',
+      'background-black-nav': '#121212',
+      'text-white': '#DDDDDD',
     },
     fontFamily: {
       'pacifico': ['Pacifico', 'cursive'],

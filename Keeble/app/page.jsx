@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   const { data:session } = useSession();
   return (
-    <section className="flex justify-center items-center gap-4">
+    <section className="flex justify-center items-center gap-4 py-10">
       <Link href="/productbuild">
         <button className="customise_btn ">
           Customise your own keyboard!

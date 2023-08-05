@@ -22,23 +22,42 @@ const Nav = () => {
         ();
     }, [])
 
-    return (
-        <nav className='flex flex-row w-full justify-between pt-3 pl-3 pr-3'>
+    // Dropdown for login and logout profile page:
+    const [showDropDown, setshowDropDown] = useState(false)
 
-            <Link href="/">
-                <h1 className='text-3xl font-roboto font-bold text-mulled-wine hover:text-black'>
-                    KEEBLE
-                </h1>
-            </Link>
+    // Function to trigger dropdown:
+    const toggleDropDown = () => {
+        setshowDropDown((prev) => !prev);
+    }
+
+    return (
+        <nav className='flex flex-row w-full justify-between bg-background-black-nav items-center py-2 px-2'>
+
+            <div>
+                <Link href="/">
+                    <h1 className='head_text_lg'>KEEBLE</h1>
+                </Link>
+            </div>
+            
+            <div className='flex gap-20 justify-between'>
+                <Link href="/productbuild">
+                    <h2 className='head_text_md'>Build</h2>
+                </Link>
+                <Link href="/guide">
+                    <h2 className='head_text_md'>Guide</h2>
+                </Link>
+                <Link href="/productlist">
+                    <h2 className='head_text_md'>Products</h2>
+                </Link>
+                <Link href="/posts">
+                    <h2 className='head_text_md'>Posts</h2>
+                </Link>
+            </div>
 
             {/* The sign in feature UI */ }
             {session?.user ? /* If user is logged in (view) */
             (
-                <div className='flex flex-row justify-right'>
-                    <button type="button" className=" login_btn " onClick={signOut}>
-                        Sign Out
-                    </button>
-                    <Link href="/profile">
+                <div className='flex flex-row justify-right relative' onClick={toggleDropDown}>
                         <Image 
                             src={session?.user.image} 
                             alt='profile-image' 
@@ -46,29 +65,42 @@ const Nav = () => {
                             height={35} 
                             className='ml-2 rounded-full cursor-pointer'
                         />
-                    </Link>
+                        {showDropDown && (
+                            <div className='dropdown_login'>
+                                <button type="button" className=" login_btn " onClick={signOut}>
+                                    Sign Out
+                                </button>
+                                <Link href="/profile">
+                                    <h1 className='head_text_md'>My Profile</h1>
+                                </Link>
+                            </div>
+                        )}
                 </div>
             ): /* If user is not logged in (view) */(
                 <>
-                <div className='flex flex-row'>
-                    {providers && Object.values(providers).map((provider) => (
-                        <button 
-                            type="button" 
-                            key={provider.name} 
-                            onClick={() => {
-                                signIn(provider.id);
-                                }}
-                            className="login_btn">
-                            Sign In
-                        </button>
-                    ))}
+                <div className='flex flex-row relative' onClick={toggleDropDown}>
                     <Image 
-                        src="/profile-icon.png" 
+                        src="/profile_icon.png" 
                         alt='profile-image' 
                         width={45} 
                         height={35} 
-                        className='ml-2 rounded-full'
+                        className='ml-2 rounded-full cursor-pointer'
                     />
+                    {showDropDown && (
+                        <div className='dropdown_login'>
+                            {providers && Object.values(providers).map((provider) => (
+                                <button 
+                                    type="button" 
+                                    key={provider.name} 
+                                    onClick={() => {
+                                        signIn(provider.id);
+                                        }}
+                                    className="login_btn">
+                                    Sign In
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 </>
             )}
