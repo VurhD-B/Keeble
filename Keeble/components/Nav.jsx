@@ -4,11 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 
 
 const Nav = () => {
 
     const { data: session } = useSession();
+    const pathname = usePathname();
 
     // Next Authentication -> Setting providers:
     const [providers, setProviders] = useState(null);
@@ -41,16 +43,24 @@ const Nav = () => {
             
             <div className='flex gap-20 justify-between'>
                 <Link href="/productbuild">
-                    <h2 className='head_text_md'>Build</h2>
+                    <h2 className={`head_text_md ${pathname === '/productbuild' ? 'font-bold text-2xl' : 'font-normal text-xl'}`} >
+                        Build
+                    </h2>
                 </Link>
                 <Link href="/guide">
-                    <h2 className='head_text_md'>Guide</h2>
+                    <h2 className={`head_text_md ${pathname === '/guide' ? 'font-bold text-2xl' : 'font-normal text-xl'}`} >
+                        Guide
+                    </h2>
                 </Link>
                 <Link href="/productlist">
-                    <h2 className='head_text_md'>Products</h2>
+                    <h2 className={`head_text_md ${pathname === '/productlist' ? 'font-bold text-2xl' : 'font-normal text-xl'}`} >
+                        Products
+                    </h2>
                 </Link>
                 <Link href="/posts">
-                    <h2 className='head_text_md'>Posts</h2>
+                    <h2 className={`head_text_md ${pathname === '/posts' ? 'font-bold text-2xl' : 'font-normal text-xl'}`} >
+                        Posts
+                    </h2>
                 </Link>
             </div>
 
@@ -67,7 +77,7 @@ const Nav = () => {
                         />
                         {showDropDown && (
                             <div className='dropdown_login'>
-                                <button type="button" className=" login_btn " onClick={signOut}>
+                                <button type="button" className="button" onClick={signOut}>
                                     Sign Out
                                 </button>
                                 <Link href="/profile">
@@ -95,7 +105,7 @@ const Nav = () => {
                                     onClick={() => {
                                         signIn(provider.id);
                                         }}
-                                    className="login_btn">
+                                    className="button">
                                     Sign In
                                 </button>
                             ))}
