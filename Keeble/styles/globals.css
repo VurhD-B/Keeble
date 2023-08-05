@@ -18,7 +18,6 @@ body {
         text-titan-white transition-all hover:bg-black;
 }
 
-
 .logo {
     @apply text-3xl font-extrabold font-pacifico text-text-white;
 }
