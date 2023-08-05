@@ -22,7 +22,17 @@ const ProductList = () => {
     }, []); // The products should be in the products variable
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
+            <div className="flex items-center bg-text-white rounded-lg shadow-md p-2 mt-5">
+                <input
+                    type="text"
+                    placeholder="Search for products..."
+                    className="flex-grow outline-none px-4 py-2 text-gray-700"
+                />
+                <button className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                    Search
+                </button>
+            </div>
             <div className="flex flex-row flex-wrap my-10 mx-10 gap-5">
                 {products.map((product) => {
                     return (

@@ -5,7 +5,7 @@ import Image from "next/image";
 const ProductContainer = ({ product }) => {
     return (
         <div className='flex flex-col gap-2 bg-box-gray w-60 h-48 max-w-72 max-h-60 overflow-hidden rounded-xl
-                    hover:bg-background-black hover:text-text-white hover:rounded-3xl'>
+                    shadow-xl hover:bg-background-black hover:text-text-white hover:rounded-3xl'>
             <div className="w-60 h-32 overflow-hidden">
                 <img src={product.imageLink}/>
             </div>
