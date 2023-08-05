@@ -33,11 +33,11 @@ const Nav = () => {
     }
 
     return (
-        <nav className='flex flex-row w-full justify-between bg-background-black-nav items-center py-2 px-2'>
+        <nav className='flex flex-row w-full justify-between bg-background-black-nav items-center py-2 px-4'>
 
             <div>
                 <Link href="/">
-                    <h1 className='head_text_lg'>KEEBLE</h1>
+                    <h1 className='logo'>Keeble</h1>
                 </Link>
             </div>
             

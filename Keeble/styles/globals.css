@@ -19,12 +19,12 @@ body {
 }
 
 
-.head_text_lg {
-    @apply text-3xl font-extrabold font-roboto text-text-white;
+.logo {
+    @apply text-3xl font-extrabold font-pacifico text-text-white;
 }
 
 .head_text_md {
-    @apply font-roboto text-text-white;
+    @apply font-pacifico text-text-white;
 }
 
 .dropdown_login {
