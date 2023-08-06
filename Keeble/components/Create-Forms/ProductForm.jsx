@@ -6,9 +6,9 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
 const FilterBar = ({ categorySelected, handleSelection }) => {
-    const categories = ["Base", "100%", "TKL", "75%", "65%", "60%", "Switches", "Tactile", "Linear", "Clicky", "3-pins", "5-pins", 
+    const categories = ["Base", "100%", "TKL", "75%", "65%", "60%", "Switches", "Tactile", "Linear", "Clicky", 
                         "Keycaps", "PBT", "ABS", "Doubleshot", "Pudding", "OEM", "Cherry", "DSA", "Accessories", "Cable", "Foam", "Lubricant",
-                        "PCB", "Carrying Case", "Pullers", "Others", "$", "$$", "$$$"];
+                        "Carrying Case", "Pullers", "Others"];
                         
     return (
         <Stack direction="row" useFlexGap flexWrap="wrap" alignItems="center" spacing="2" justifyContent='flex-start'> 
