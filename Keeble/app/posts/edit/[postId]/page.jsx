@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import PostForm from "@components/Forms/PostForm";
+import PostForm from "@components/Create-Forms/PostForm";
 
 const EditPost = ({ params }) => {    
     const router = useRouter();

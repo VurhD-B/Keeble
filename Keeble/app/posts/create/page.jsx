@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-import PostForm from "@components/Forms/PostForm";
+import PostForm from "@components/Create-Forms/PostForm";
 
 const CreatePost = () => {
     const { data:session } = useSession();
