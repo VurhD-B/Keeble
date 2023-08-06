@@ -9,20 +9,25 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import ProductContainer from "@components/ProductContainer";
 
-const bases = ["Base", "100%", "TKL", "75%", "65%", "60%"]
-const switches = ["Linear", "Tactile", "Clicky"]
-const keycaps = ["ABS", "PBT", "OEM", "Cherry", "DSA"]
-const accessories = [""]
+const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
+const switchesFilters = ["Linear", "Tactile", "Clicky"]
+const keycapsFilters = ["ABS", "PBT", "OEM", "Cherry", "DSA"]
+const accessoriesFilters = [""]
 
-const FilterBar = ({ category, selected, handleSelection }) => {
+const FilterBar = ({ filters, selected, handleSelection }) => {
     return (
         <Stack className="justify-evenly mt-1" direction="row" alignItems="center" spacing="2">
-            {category.map(category => {
+            {filters.map(filter => {
                 return (
                     <Chip
-                        label={category}
-                        color={selected.includes(category) ? "primary" : "default"}
-                        onClick={() => handleSelection(category)}
+                        className={selected.includes(filter) ? 
+                            "bg-gradient-to-r from-warm-blue to-cool-blue": 
+                            "bg-gray text-text-white"}
+                        style={{
+                            fontFamily: "Josefin Sans, sans-serif",
+                        }}
+                        label={filter}
+                        onClick={() => handleSelection(filter)}
                 />
                 )
             })}
@@ -101,22 +106,15 @@ const ProductBuild = () => {
 
         }
         fetchProducts();
-console.log(products);
-
     }, []); // The products should be in the products variable
 
-    const ProductGrid = ({ category, text }) => {
-        const filteredProducts = products.filter((product) => {
-console.log(product.categories[0])
-            category.includes(product.categories[0])
-        })
-
+    const ProductGrid = ({ filters, products, text }) => {
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
-                <FilterBar className="sticky" category={category} selected={selected} handleSelection={handleSelection} />
+                <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
-                    {filteredProducts.map((product) => {
+                    {products.map((product) => {
                         return (
                             <ProductContainer className="min-w-[200px] flex-shrink-0" product={product}/>
                         )
@@ -126,13 +124,18 @@ console.log(product.categories[0])
         )
     }
 
+    const bases = products.filter((product) => product.categories[0] === "Base")
+    const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
+    const switches = products.filter((product) => product.categories[0] === "Switches")
+    const accessories = products.filter((product) => product.categories[0] === "Accessories")
+
     return (
         <>
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <ProductGrid category={bases} text="Step 1: Choose a base"/>
-                <ProductGrid category={switches} text="Step 2: Choose a switch"/>
-                <ProductGrid category={keycaps} text="Step 3: Choose keycaps"/>
-                <ProductGrid category={accessories} text="Optional: Choose accessories"/>
+                <ProductGrid filters={baseFilters} products={bases} text="Step 1: Choose a base"/>
+                <ProductGrid filters={keycapsFilters} products={switches} text="Step 2: Choose a switch"/>
+                <ProductGrid filters={switchesFilters} products={keycaps} text="Step 3: Choose keycaps"/>
+                <ProductGrid filters={accessoriesFilters} products={accessories} text="Optional: Choose accessories"/>
             </div>
         </>
     )
