@@ -28,7 +28,7 @@ const ProductPage = ({ params }) => {
     }
 
     return (
-        <div className="w-[97%] h-full bg-background-gray mx-5 my-5">
+        <div className="w-[97%] h-full bg-background-gray mx-5 my-5 rounded-lg">
             <ProductInfoCard product={product} />
         </div>
     )

@@ -15,18 +15,18 @@ const ProductInfoCard = ({product}) => {
             setReviews(data);
         }
         fetchProductReviews();
-    },[]);
+    },[product]);
 
     return (
         <div className='flex px-5 py-5 object-contain'>
             {/* Left Side of the Card */}
-            <div className='flex flex-col justify-center gap-10 w-[50%]'>
+            <div className='flex flex-col justify-center gap-10 w-[50%] ml-10'>
                 <Image src={product.imageLink} width={600} height={400} className='rounded-xl' />
-                <button className='button w-[600px]'>Show Reviews [{reviews.length}]</button>
+                <button className='button w-[600px]'>Total Reviews [{reviews.length}]</button>
             </div>
 
             {/* Right Side of the Card */}
-            <div className='w-[50%] flex flex-col items-center gap-10 my-10'>
+            <div className='w-[50%] flex flex-col items-center gap-10 my-10 mr-10'>
                 <h1 className='heading'>{product.name}</h1>
                 <h1 className='text-2xl font-extrabold text-text-white'>${product.price}</h1>
                 <div className='divider'></div>
@@ -41,7 +41,7 @@ const ProductInfoCard = ({product}) => {
                     </button>
                 </div>
                 {/* Review Cards */}
-                <div className='flex justify-center items-center gap-5 mt-10'>
+                <div className='flex justify-center items-center gap-5 mt-16'>
                     {reviews.map((review) => {
                         return (
                             <ReviewContainer review={review} />

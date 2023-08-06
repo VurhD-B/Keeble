@@ -1,8 +1,10 @@
 import React from 'react'
 
-const ReviewContainer = () => {
+const ReviewContainer = ({review}) => {
     return (
-        <div>ReviewContainer</div>
+        <div className='w-[75%] bg-review-box-gray'>
+            I'm just typing to check stuff so that I can see how much width I'm allowed to have in this div.
+        </div>
     )
 }
 

@@ -26,7 +26,8 @@ module.exports = {
       'text-white': '#DDDDDD',
       'button-grey': '#565656',
       'box-gray': '#d9d9d9',
-      'background-gray': '#454545'
+      'background-gray': '#454545',
+      'review-box-gray': '#6d6d6d'
     },
     fontFamily: {
       'pacifico': ['Pacifico', 'cursive'],
