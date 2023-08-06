@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import ProductForm from "@components/Create-Forms/ProductForm";
+import ProductForm from "@components/Forms/ProductForm";
 
 const Add = () => {
     const router = useRouter();

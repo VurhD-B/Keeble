@@ -2,7 +2,7 @@
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import ReviewForm from '@components/Create-Forms/ReviewForm';
+import ReviewForm from '@components/Forms/ReviewForm';
 
 const CreateReviewPage = ({params}) => {
     const {data:session} = useSession();
