@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,34 +9,24 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import ProductContainer from "@components/ProductContainer";
 
-const FilterBar = ({ selected, handleSelection }) => {
+const bases = ["Base", "100%", "TKL", "75%", "65%", "60%"]
+const switches = ["Linear", "Tactile", "Clicky"]
+const keycaps = ["ABS", "PBT", "OEM", "Cherry", "DSA"]
+const accessories = [""]
+
+const FilterBar = ({ category, selected, handleSelection }) => {
     return (
         <Stack className="justify-evenly mt-1" direction="row" alignItems="center" spacing="2">
-            <Chip
-                label="Base"
-                color={selected.includes("base") ? "primary" : "default"}
-                onClick={() => handleSelection("base")}
-            />
-            <Chip
-                label="PCB"
-                color={selected.includes("pcb") ? "primary" : "default"}
-                onClick={() => handleSelection("pcb")}
-            />
-            <Chip
-                label="Switches"
-                color={selected.includes("switches") ? "primary" : "default"}
-                onClick={() => handleSelection("switches")}
-            />
-            <Chip
-                label="Keycaps"
-                color={selected.includes("keycaps") ? "primary" : "default"}
-                onClick={() => handleSelection("keycaps")}
-            />
-            <Chip
-                label="Accessories"
-                color={selected.includes("accessories") ? "primary" : "default"}
-                onClick={() => handleSelection("accessories")}
-            />
+            {category.map(category => {
+                return (
+                    <Chip
+                        label={category}
+                        color={selected.includes(category) ? "primary" : "default"}
+                        onClick={() => handleSelection(category)}
+                />
+                )
+            })}
+
         </Stack>
     );
 };
@@ -99,7 +88,7 @@ const ProductBuild = () => {
         if (selected.length === 0) {
             return items;
         }
-        return items.filter((product) => selected.some(r=> product.categories.includes(r)));
+        return items.filter((product) => selected.some(r=> product.category.includes(r)));
     };
 
     // Fetching the products from DB:
@@ -116,14 +105,21 @@ console.log(products);
 
     }, []); // The products should be in the products variable
 
-    const ProductGrid = ({ text }) => {
+    const ProductGrid = ({ category, text }) => {
+        const filteredProducts = products.filter((product) => {
+console.log(product.categories[0])
+            category.includes(product.categories[0])
+        })
+
         return (
-            <div className="flex flex-col bg-card-black w-[full] min-h-[300px] m-2 p-2 text-[#d9d9d9] rounded shadow-lg">
+            <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
-                <FilterBar selected={selected} handleSelection={handleSelection} />
-                <div>
-                    {products.map(product => {
-                        return (<ProductContainer product={product}/>)
+                <FilterBar className="sticky" category={category} selected={selected} handleSelection={handleSelection} />
+                <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
+                    {filteredProducts.map((product) => {
+                        return (
+                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product}/>
+                        )
                     })}
                 </div>
             </div>
@@ -133,10 +129,10 @@ console.log(products);
     return (
         <>
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <ProductGrid text="Step 1: Choose a base"/>
-                <ProductGrid text="Step 2: Choose a switch"/>
-                <ProductGrid text="Step 3: Choose keycaps"/>
-                <ProductGrid text="Optional: Choose accessories"/>
+                <ProductGrid category={bases} text="Step 1: Choose a base"/>
+                <ProductGrid category={switches} text="Step 2: Choose a switch"/>
+                <ProductGrid category={keycaps} text="Step 3: Choose keycaps"/>
+                <ProductGrid category={accessories} text="Optional: Choose accessories"/>
             </div>
         </>
     )
