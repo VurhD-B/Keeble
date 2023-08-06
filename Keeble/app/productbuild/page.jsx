@@ -8,6 +8,7 @@ import { Button, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import BuildProductContainer from "@components/BuildProductContainer";
+import Carousel from "@components/carousel";
 
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
 const switchesFilters = ["Linear", "Tactile", "Clicky"]
@@ -67,7 +68,7 @@ const AssemblyItem = ({ product }) => {
 
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
-    
+
 
     const handleAddToAssembly = (currentproduct) => {
         const nextProducts = products.map((product) => {
@@ -86,7 +87,7 @@ const ProductBuild = () => {
             const data = await response.json();
             await console.log(data);
             setProducts(data);
-// console.log(products);
+            // console.log(products);
         }
         fetchProducts();
     }, []); // The products should be in the products variable
@@ -113,24 +114,35 @@ const ProductBuild = () => {
         };
         const filteredproducts = filterItems(products);
         return (
-            <div className="flex flex-col bg-card-black min-h-[380px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
-                {text}
-                {filters ?
-                    <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
-                    : null}
-                <div className="flex flex-col gap-3 mt-4 justify-start min-h-full min-w-full flex-wrap overflow-x-auto">
-                    {filteredproducts.map((product) => {
-                        return (
-                            <BuildProductContainer 
-                                className="w-72 flex-shrink-0"
-                                product={product}
-                                btnaction={product.addedassembly ? "Added" : "Add"}
-                                btnactionfunc={btnactionfunc}>
-                            </BuildProductContainer>
-                        )
-                    })}
+            <div className="flex flex-col bg-card-black min-h-[400px] m-2 p-2 overflow-y-hidden rounded shadow-lg ">
+                <div className="flex flex-col ">
+                    {text}
+                    {filters ?
+                        <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
+                        : null}
                 </div>
+                <div className="gap-3 mt-4 w-full">
+                    <Carousel>
+                        {filteredproducts.map((product) => {
+                            return (
+                                <div className="carousel-item text-center relative w-72 h-full snap-start">
+                                    <BuildProductContainer
+                                        
+                                        product={product}
+                                        btnaction={product.addedassembly ? "Added" : "Add"}
+                                        btnactionfunc={btnactionfunc}>
+                                    </BuildProductContainer>
+                                </div>
+
+                            )
+                        })}
+
+                    </Carousel>
+                </div>
+
+
             </div>
+
         )
     }
 
@@ -141,16 +153,16 @@ const ProductBuild = () => {
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
                         if (product.addedassembly)
-                        return (
-                            <BuildProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
-                        )
+                            return (
+                                <BuildProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
+                            )
                     })}
                 </div>
             </div>
         )
     }
 
-    const bases = products.filter((product) =>product.categories[0] === "Base")
+    const bases = products.filter((product) => product.categories[0] === "Base")
     const [baseselectedfilters, setBaseSelectedFilters] = useState([]);
     const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
     const [keycapsselectedfilters, setKeycapsSelectedFilters] = useState([]);
@@ -162,37 +174,37 @@ const ProductBuild = () => {
     return (
         <div className="flex flex-row">
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <ProductGrid 
-                filters={baseFilters} 
-                products={bases}
-                selected = {baseselectedfilters}
-                setSelected = {setBaseSelectedFilters}
-                text="Step 1: Choose a base" 
-                btnactionfunc={handleAddToAssembly} />
-                <ProductGrid 
-                filters={switchesFilters} 
-                products={switches} 
-                selected = {switchesselectedfilters}
-                setSelected = {setSwitchesSelectedFilters}
-                text="Step 2: Choose a switch" 
-                btnactionfunc={handleAddToAssembly} />
-                <ProductGrid 
-                filters={keycapsFilters} 
-                products={keycaps} 
-                selected = {keycapsselectedfilters}
-                setSelected = {setKeycapsSelectedFilters}
-                text="Step 3: Choose keycaps" 
-                btnactionfunc={handleAddToAssembly} />
-                <ProductGrid 
-                filters={accessoriesFilters} 
-                products={accessories} 
-                selected = {accessoriesselectedfilters}
-                setSelected = {setAccessoriesSelectedFilters}
-                text="Optional: Choose accessories" 
-                btnactionfunc={handleAddToAssembly} />
+                <ProductGrid
+                    filters={baseFilters}
+                    products={bases}
+                    selected={baseselectedfilters}
+                    setSelected={setBaseSelectedFilters}
+                    text="Step 1: Choose a base"
+                    btnactionfunc={handleAddToAssembly} />
+                <ProductGrid
+                    filters={switchesFilters}
+                    products={switches}
+                    selected={switchesselectedfilters}
+                    setSelected={setSwitchesSelectedFilters}
+                    text="Step 2: Choose a switch"
+                    btnactionfunc={handleAddToAssembly} />
+                <ProductGrid
+                    filters={keycapsFilters}
+                    products={keycaps}
+                    selected={keycapsselectedfilters}
+                    setSelected={setKeycapsSelectedFilters}
+                    text="Step 3: Choose keycaps"
+                    btnactionfunc={handleAddToAssembly} />
+                <ProductGrid
+                    filters={accessoriesFilters}
+                    products={accessories}
+                    selected={accessoriesselectedfilters}
+                    setSelected={setAccessoriesSelectedFilters}
+                    text="Optional: Choose accessories"
+                    btnactionfunc={handleAddToAssembly} />
             </div>
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <AssemblyGrid products={products} text="Assembly area"  btnactionfunc={handleAddToAssembly} />
+                <AssemblyGrid products={products} text="Assembly area" btnactionfunc={handleAddToAssembly} />
             </div>
         </div>
     )
