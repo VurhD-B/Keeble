@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import ReviewContainer from './ReviewContainer';
+import Link from 'next/link';
 
 const ProductInfoCard = ({product}) => {
 
@@ -36,9 +37,11 @@ const ProductInfoCard = ({product}) => {
                     <button className='fancy_button'>
                         <a href={product.productLink} target='_blank'> Purchase Product </a>
                     </button>
-                    <button className='button rounded-md'>
-                        Write a review
-                    </button>
+                    <Link href={`/productlist/${product._id}/Create_Review`}>
+                        <button className='button rounded-md'>
+                            Write a review
+                        </button>
+                    </Link>
                 </div>
                 {/* Review Cards */}
                 <div className='flex justify-center items-center gap-5 mt-5 flex-nowrap'>
