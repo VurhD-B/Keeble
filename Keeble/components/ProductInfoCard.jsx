@@ -1,13 +1,28 @@
 'use client';
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
+import ReviewContainer from './ReviewContainer';
 
-const ProductInfoCard = ({product, reviewCount, reviews}) => {
+const ProductInfoCard = ({product}) => {
+
+    const [reviews, setReviews] = useState([]);
+
+    // Fetch the reviews for this particular product:
+    useEffect(() => {
+        const fetchProductReviews = async () => {
+            const response = await fetch(`/api/reviews/${product._id}`);
+            const data = await response.json();
+            setReviews(data);
+        }
+        fetchProductReviews();
+    },[]);
+
     return (
         <div className='flex px-5 py-5 object-contain'>
             {/* Left Side of the Card */}
             <div className='flex flex-col justify-center gap-10 w-[50%]'>
                 <Image src={product.imageLink} width={600} height={400} className='rounded-xl' />
-                <button className='button w-[600px]'>Show Reviews [{reviewCount}]</button>
+                <button className='button w-[600px]'>Show Reviews [{reviews.length}]</button>
             </div>
 
             {/* Right Side of the Card */}
@@ -25,8 +40,14 @@ const ProductInfoCard = ({product, reviewCount, reviews}) => {
                         Write a review
                     </button>
                 </div>
-                
-                
+                {/* Review Cards */}
+                <div className='flex justify-center items-center gap-5 mt-10'>
+                    {reviews.map((review) => {
+                        return (
+                            <ReviewContainer review={review} />
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
