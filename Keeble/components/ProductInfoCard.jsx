@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import ReviewContainer from './ReviewContainer';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 const ProductInfoCard = ({product}) => {
-
+    const {data:session} = useSession();
     const [reviews, setReviews] = useState([]);
 
     // Fetch the reviews for this particular product:
@@ -37,11 +38,11 @@ const ProductInfoCard = ({product}) => {
                     <button className='fancy_button'>
                         <a href={product.productLink} target='_blank'> Purchase Product </a>
                     </button>
-                    <Link href={`/productlist/${product._id}/Create_Review`}>
+                    {session?.user && (<Link href={`/productlist/${product._id}/Create_Review`}>
                         <button className='button rounded-md'>
                             Write a review
                         </button>
-                    </Link>
+                    </Link>)}
                 </div>
                 {/* Review Cards */}
                 <div className='flex justify-center items-center gap-5 mt-5 flex-nowrap'>
