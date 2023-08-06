@@ -37,7 +37,7 @@ const ProductForm = ({ type, product, setProduct, submitting, handleSubmit, cate
         }
     };
     return (
-        <section className="w-50 flex-start flex-col mx-8 my-4 bg-carolina-blue rounded-xl px-10 py-6">
+        <section className="w-50 flex-start flex-col mx-8 my-4 bg-box-gray rounded-xl px-10 py-6">
             <h1 className="bold text-left">
                 <span className="font-roboto-800 font-extrabold text-3xl">{type} Product</span>
             </h1>
@@ -134,13 +134,13 @@ const ProductForm = ({ type, product, setProduct, submitting, handleSubmit, cate
                 </label>
 
                 <div className="flex gap-4 justify-between mt-5">
-                    <Link href="/" className="text-lg bg-mulled-wine text-titan-white rounded-xl px-2 py-1">
+                    <Link href="/" className="button">
                         Cancel
                     </Link>
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="text-lg bg-mulled-wine text-titan-white rounded-xl px-2 py-1">
+                        className="button">
                         {submitting ? `${type}...` : type}
                     </button>
                 </div>

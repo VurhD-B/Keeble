@@ -34,7 +34,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="flex gap-5 my-10 mx-10 flex-wrap">
+        <div className="flex gap-10 my-10 mx-10 flex-wrap justify-center">
             {myReviews.map((review) => {
                 return(
                     <ReviewInfoContainer review={review} />
