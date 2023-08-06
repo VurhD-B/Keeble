@@ -86,12 +86,12 @@ const ProductBuild = () => {
             const data = await response.json();
             await console.log(data);
             setProducts(data);
-
+// console.log(products);
         }
         fetchProducts();
     }, []); // The products should be in the products variable
 
-    const ProductGrid = ({ filters, products, text }) => {
+    const ProductGrid = ({ filters, products, text, btnaction, btnactionfunc }) => {
         const [selected, setSelected] = useState([]);
         const handleSelection = (filter) => {
             const isSelected = selected.includes(filter);
@@ -105,7 +105,7 @@ const ProductBuild = () => {
         };
 
         const filterItems = (items) => {
-            console.log(items);
+            // console.log(items);
             if (selected.length === 0) {
                 return items;
             }
@@ -122,7 +122,27 @@ const ProductBuild = () => {
                 <div className="flex flex-col gap-3 mt-4 justify-start min-h-full min-w-full flex-wrap overflow-x-auto">
                     {filteredproducts.map((product) => {
                         return (
-                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product} />
+                            <ProductContainer 
+                            className="min-w-[200px] flex-shrink-0" 
+                            product={product}
+                            btnaction={product.addedassembly ? "Added" : "Add to Assembly"}  
+                            btnactionfunc={btnactionfunc} />
+                        )
+                    })}
+                </div>
+            </div>
+        )
+    }
+
+    const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
+        return (
+            <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
+                {text}
+                <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
+                    {products.map((product) => {
+                        if (product.addedassembly)
+                        return (
+                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
                         )
                     })}
                 </div>
@@ -136,14 +156,37 @@ const ProductBuild = () => {
     const accessories = products.filter((product) => product.categories[0] === "Accessories")
 
     return (
-        <>
+        <div className="flex flex-row">
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <ProductGrid filters={baseFilters} products={bases} text="Step 1: Choose a base" />
-                <ProductGrid filters={switchesFilters} products={switches} text="Step 2: Choose a switch" />
-                <ProductGrid filters={keycapsFilters} products={keycaps} text="Step 3: Choose keycaps" />
-                <ProductGrid filters={accessoriesFilters} products={accessories} text="Optional: Choose accessories" />
+                <ProductGrid 
+                filters={baseFilters} 
+                products={bases} 
+                text="Step 1: Choose a base" 
+                
+                btnactionfunc={handleAddToAssembly} />
+                <ProductGrid 
+                filters={switchesFilters} 
+                products={switches} 
+                text="Step 2: Choose a switch" 
+                btnaction={"Add to Assembly"} 
+                btnactionfunc={handleAddToAssembly} />
+                <ProductGrid 
+                filters={keycapsFilters} 
+                products={keycaps} 
+                text="Step 3: Choose keycaps" 
+                btnaction={"Add to Assembly"} 
+                btnactionfunc={handleAddToAssembly} />
+                <ProductGrid 
+                filters={accessoriesFilters} 
+                products={accessories} 
+                text="Optional: Choose accessories" 
+                btnaction={"Add to Assembly"} 
+                btnactionfunc={handleAddToAssembly} />
             </div>
-        </>
+            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
+                <AssemblyGrid products={products} text="Assembly area"  btnactionfunc={handleAddToAssembly} />
+            </div>
+        </div>
     )
 }
 
