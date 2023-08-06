@@ -21,6 +21,18 @@ const ProductList = () => {
 
     }, []); // The products should be in the products variable
 
+    // Implementing the search filter
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredProducts = searchQuery.trim()
+    ? products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ) : products;
+
+    const handleInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    }
+
     return (
         <div className="flex flex-col justify-center items-center">
             
@@ -29,7 +41,9 @@ const ProductList = () => {
                 <input
                     type="text"
                     placeholder="Search for products..."
+                    value={searchQuery}
                     className="flex-grow outline-none px-4 py-2 text-gray-700 w-96"
+                    onChange={handleInputChange}
                 />
                 <button className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
                     Search
@@ -38,7 +52,7 @@ const ProductList = () => {
 
             {/* Products Grid */}
             <div className="flex flex-row flex-wrap justify-center my-10 mx-10 gap-5">
-                {products.map((product) => {
+                {filteredProducts.map((product) => {
                     return (
                         <Link href={`/productlist/${product._id}`}>
                             <ProductContainer
