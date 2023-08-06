@@ -68,7 +68,6 @@ const AssemblyItem = ({ product }) => {
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
 
-
     const handleAddToAssembly = (currentproduct) => {
         const nextProducts = products.map((product) => {
             if (product._id === currentproduct._id) {
@@ -123,10 +122,10 @@ const ProductBuild = () => {
                     {filteredproducts.map((product) => {
                         return (
                             <ProductContainer 
-                            className="min-w-[200px] flex-shrink-0" 
-                            product={product}
-                            btnaction={product.addedassembly ? "Added" : "Add to Assembly"}  
-                            btnactionfunc={btnactionfunc} />
+                                className="max-w-48 flex-shrink-0"
+                                product={product}
+                                btnaction={product.addedassembly ? "Added" : "Add"}  
+                                btnactionfunc={btnactionfunc} />
                         )
                     })}
                 </div>
