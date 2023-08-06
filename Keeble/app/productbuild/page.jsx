@@ -12,7 +12,7 @@ import ProductContainer from "@components/ProductContainer";
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
 const switchesFilters = ["Linear", "Tactile", "Clicky"]
 const keycapsFilters = ["ABS", "PBT", "OEM", "Cherry", "DSA"]
-const accessoriesFilters = [""]
+const accessoriesFilters = []
 
 const FilterBar = ({ filters, selected, handleSelection }) => {
     return (
@@ -20,15 +20,15 @@ const FilterBar = ({ filters, selected, handleSelection }) => {
             {filters.map(filter => {
                 return (
                     <Chip
-                        className={selected.includes(filter) ? 
-                            "bg-gradient-to-r from-warm-blue to-cool-blue": 
+                        className={selected.includes(filter) ?
+                            "bg-gradient-to-r from-warm-blue to-cool-blue" :
                             "bg-gray text-text-white"}
                         style={{
                             fontFamily: "Josefin Sans, sans-serif",
                         }}
                         label={filter}
                         onClick={() => handleSelection(filter)}
-                />
+                    />
                 )
             })}
 
@@ -44,29 +44,30 @@ const AssemblyItem = ({ product }) => {
     return (
         <div className="flex flex-row items-center">
             <Card className="w-full h-[140px] flex flex-row justify-center items-center text-center">
-            <CardMedia
-                component="img"
-                sx={{ height: 140 }}
-                image={product.imageLink}
-                title="dummy-image"
-            />
-            <div className="flex flex-col items-center text-center">
-                <CardContent>
-                <Typography variant="h7">{product.name}</Typography>
-                </CardContent>
-                <CardActions>
-                <Button size="small" color="primary" onClick={handleBuy}>
-                    Buy One
-                </Button>
-                </CardActions>
-            </div>
+                <CardMedia
+                    component="img"
+                    sx={{ height: 140 }}
+                    image={product.imageLink}
+                    title="dummy-image"
+                />
+                <div className="flex flex-col items-center text-center">
+                    <CardContent>
+                        <Typography variant="h7">{product.name}</Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={handleBuy}>
+                            Buy One
+                        </Button>
+                    </CardActions>
+                </div>
             </Card>
         </div>
-    );};
+    );
+};
 
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
-    const [selected, setSelected] = useState([]);
+
 
     const handleAddToAssembly = (currentproduct) => {
         const nextProducts = products.map((product) => {
@@ -76,24 +77,6 @@ const ProductBuild = () => {
             return product;
         });
         setProducts(nextProducts);
-    };
-
-    const handleSelection = (filter) => {
-        const isSelected = selected.includes(filter);
-        if (isSelected) {
-            setSelected(
-                selected.filter((selectedFilter) => selectedFilter !== filter)
-            );
-        } else {
-            setSelected([...selected, filter]);
-        }
-    };
-
-    const filterItems = (items) => {
-        if (selected.length === 0) {
-            return items;
-        }
-        return items.filter((product) => selected.some(r=> product.category.includes(r)));
     };
 
     // Fetching the products from DB:
@@ -109,14 +92,37 @@ const ProductBuild = () => {
     }, []); // The products should be in the products variable
 
     const ProductGrid = ({ filters, products, text }) => {
+        const [selected, setSelected] = useState([]);
+        const handleSelection = (filter) => {
+            const isSelected = selected.includes(filter);
+            if (isSelected) {
+                setSelected(
+                    selected.filter((selectedFilter) => selectedFilter !== filter)
+                );
+            } else {
+                setSelected([...selected, filter]);
+            }
+        };
+
+        const filterItems = (items) => {
+            console.log(items);
+            if (selected.length === 0) {
+                return items;
+            }
+            return items.filter((product) => selected.some(r => product.categories.includes(r)));
+            // return items;
+        };
+        const filteredproducts = filterItems(products);
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
-                <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
+                {filters ?
+                    <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
+                    : null}
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
-                    {products.map((product) => {
+                    {filteredproducts.map((product) => {
                         return (
-                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product}/>
+                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product} />
                         )
                     })}
                 </div>
@@ -124,7 +130,7 @@ const ProductBuild = () => {
         )
     }
 
-    const bases = products.filter((product) => product.categories[0] === "Base")
+    const bases = products.filter((product) =>product.categories[0] === "Base")
     const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
     const switches = products.filter((product) => product.categories[0] === "Switches")
     const accessories = products.filter((product) => product.categories[0] === "Accessories")
@@ -132,10 +138,10 @@ const ProductBuild = () => {
     return (
         <>
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
-                <ProductGrid filters={baseFilters} products={bases} text="Step 1: Choose a base"/>
-                <ProductGrid filters={keycapsFilters} products={switches} text="Step 2: Choose a switch"/>
-                <ProductGrid filters={switchesFilters} products={keycaps} text="Step 3: Choose keycaps"/>
-                <ProductGrid filters={accessoriesFilters} products={accessories} text="Optional: Choose accessories"/>
+                <ProductGrid filters={baseFilters} products={bases} text="Step 1: Choose a base" />
+                <ProductGrid filters={switchesFilters} products={switches} text="Step 2: Choose a switch" />
+                <ProductGrid filters={keycapsFilters} products={keycaps} text="Step 3: Choose keycaps" />
+                <ProductGrid filters={accessoriesFilters} products={accessories} text="Optional: Choose accessories" />
             </div>
         </>
     )
