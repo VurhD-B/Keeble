@@ -21,11 +21,11 @@ body {
 }
 
 .logo {
-    @apply text-3xl font-extrabold font-pacifico text-text-white;
+    @apply text-3xl font-extrabold text-text-white;
 }
 
 .head_text_md {
-    @apply font-pacifico text-text-white;
+    @apply  text-text-white;
 }
 
 .dropdown_login {
@@ -46,5 +46,5 @@ body {
 }
 
 .fancy_button {
-    @apply bg-gradient-to-r from-warm-blue to-cool-blue text-white px-4 py-2 rounded-md text-base cursor-pointer;
+    @apply bg-gradient-to-r from-warm-blue to-cool-blue text-white px-4 py-2 rounded-full text-base cursor-pointer;
 }
