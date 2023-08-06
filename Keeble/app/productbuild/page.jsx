@@ -67,6 +67,7 @@ const AssemblyItem = ({ product }) => {
 
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
+    
 
 
     const handleAddToAssembly = (currentproduct) => {
@@ -91,8 +92,7 @@ const ProductBuild = () => {
         fetchProducts();
     }, []); // The products should be in the products variable
 
-    const ProductGrid = ({ filters, products, text, btnaction, btnactionfunc }) => {
-        const [selected, setSelected] = useState([]);
+    const ProductGrid = ({ filters, products, text, btnaction, btnactionfunc, selected, setSelected }) => {
         const handleSelection = (filter) => {
             const isSelected = selected.includes(filter);
             if (isSelected) {
@@ -151,36 +151,44 @@ const ProductBuild = () => {
     }
 
     const bases = products.filter((product) =>product.categories[0] === "Base")
+    const [baseselectedfilters, setBaseSelectedFilters] = useState([]);
     const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
+    const [keycapsselectedfilters, setKeycapsSelectedFilters] = useState([]);
     const switches = products.filter((product) => product.categories[0] === "Switches")
+    const [switchesselectedfilters, setSwitchesSelectedFilters] = useState([]);
     const accessories = products.filter((product) => product.categories[0] === "Accessories")
+    const [accessoriesselectedfilters, setAccessoriesSelectedFilters] = useState([]);
 
     return (
         <div className="flex flex-row">
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
                 <ProductGrid 
                 filters={baseFilters} 
-                products={bases} 
+                products={bases}
+                selected = {baseselectedfilters}
+                setSelected = {setBaseSelectedFilters}
                 text="Step 1: Choose a base" 
-                
                 btnactionfunc={handleAddToAssembly} />
                 <ProductGrid 
                 filters={switchesFilters} 
                 products={switches} 
+                selected = {switchesselectedfilters}
+                setSelected = {setSwitchesSelectedFilters}
                 text="Step 2: Choose a switch" 
-                btnaction={"Add to Assembly"} 
                 btnactionfunc={handleAddToAssembly} />
                 <ProductGrid 
                 filters={keycapsFilters} 
                 products={keycaps} 
+                selected = {keycapsselectedfilters}
+                setSelected = {setKeycapsSelectedFilters}
                 text="Step 3: Choose keycaps" 
-                btnaction={"Add to Assembly"} 
                 btnactionfunc={handleAddToAssembly} />
                 <ProductGrid 
                 filters={accessoriesFilters} 
                 products={accessories} 
+                selected = {accessoriesselectedfilters}
+                setSelected = {setAccessoriesSelectedFilters}
                 text="Optional: Choose accessories" 
-                btnaction={"Add to Assembly"} 
                 btnactionfunc={handleAddToAssembly} />
             </div>
             <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
