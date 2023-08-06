@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import ProductContainer from "@components/ProductContainer";
+import BuildProductContainer from "@components/BuildProductContainer";
 
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
 const switchesFilters = ["Linear", "Tactile", "Clicky"]
@@ -113,7 +113,7 @@ const ProductBuild = () => {
         };
         const filteredproducts = filterItems(products);
         return (
-            <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
+            <div className="flex flex-col bg-card-black min-h-[380px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
                 {filters ?
                     <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
@@ -121,11 +121,12 @@ const ProductBuild = () => {
                 <div className="flex flex-col gap-3 mt-4 justify-start min-h-full min-w-full flex-wrap overflow-x-auto">
                     {filteredproducts.map((product) => {
                         return (
-                            <ProductContainer 
-                                className="max-w-48 flex-shrink-0"
+                            <BuildProductContainer 
+                                className="w-72 flex-shrink-0"
                                 product={product}
-                                btnaction={product.addedassembly ? "Added" : "Add"}  
-                                btnactionfunc={btnactionfunc} />
+                                btnaction={product.addedassembly ? "Added" : "Add"}
+                                btnactionfunc={btnactionfunc}>
+                            </BuildProductContainer>
                         )
                     })}
                 </div>
@@ -141,7 +142,7 @@ const ProductBuild = () => {
                     {products.map((product) => {
                         if (product.addedassembly)
                         return (
-                            <ProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
+                            <BuildProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
                         )
                     })}
                 </div>
