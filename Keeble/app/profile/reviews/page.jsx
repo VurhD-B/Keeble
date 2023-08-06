@@ -29,7 +29,7 @@ const MyReviews = () => {
 
     if(loading) {
         return(
-            <div className="heading">Loading your reviews...</div>
+            <div className="heading text-center m-36">Loading your reviews...</div>
         )
     }
 
