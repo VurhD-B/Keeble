@@ -37,7 +37,7 @@ const ProductList = () => {
             </div>
 
             {/* Products Grid */}
-            <div className="flex flex-row flex-wrap my-10 mx-10 gap-5">
+            <div className="flex flex-row flex-wrap justify-center my-10 mx-10 gap-5">
                 {products.map((product) => {
                     return (
                         <Link href={`/productlist/${product._id}`}>
