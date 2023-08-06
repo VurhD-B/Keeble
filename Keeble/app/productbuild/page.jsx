@@ -119,7 +119,7 @@ const ProductBuild = () => {
                 {filters ?
                     <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
                     : null}
-                <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
+                <div className="flex flex-col gap-3 mt-4 justify-start min-h-full min-w-full flex-wrap overflow-x-auto">
                     {filteredproducts.map((product) => {
                         return (
                             <ProductContainer className="min-w-[200px] flex-shrink-0" product={product} />
