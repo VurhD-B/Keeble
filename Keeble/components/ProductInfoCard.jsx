@@ -41,7 +41,7 @@ const ProductInfoCard = ({product}) => {
                     </button>
                 </div>
                 {/* Review Cards */}
-                <div className='flex justify-center items-center gap-5 mt-5'>
+                <div className='flex justify-center items-center gap-5 mt-5 flex-nowrap'>
                     {reviews.map((review) => {
                         return (
                             <ReviewContainer review={review} />
