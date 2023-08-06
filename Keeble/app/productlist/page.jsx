@@ -42,7 +42,7 @@ const ProductList = () => {
                     return (
                         <Link href={`/productlist/${product._id}`}>
                             <ProductContainer
-                                product={product}    
+                                product={product}
                             />
                         </Link>
                     )

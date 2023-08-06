@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const ProductContainer = ({ product }) => {
+const ProductContainer = ({ product, btnaction, btnactionfunc }) => {
     return (
         <div className='flex flex-col gap-2 bg-box-gray w-60 h-48 max-h-60 max-w-72 overflow-hidden rounded-xl
                     shadow-xl hover:bg-background-black hover:text-text-white hover:rounded-3xl'>
@@ -12,6 +12,14 @@ const ProductContainer = ({ product }) => {
             <div className="flex flex-col justify-center items-center">
                 <h1>{product.name}</h1>
                 <h1>{product.categories[0]}</h1>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <button 
+                className="btn bg-button-blue hover:bg-button-blue-hover rounded-xl p-2" 
+                onClick={() => {
+                    btnactionfunc(product);
+                }}>
+                    {btnaction}</button>
             </div>
         </div>
     )
