@@ -17,7 +17,7 @@ body {
 
 .button{
     @apply rounded-full border  bg-button-grey py-1.5 px-5 text-lg
-        text-titan-white transition-all hover:bg-black;
+        text-titan-white transition-all hover:bg-dull-black;
 }
 
 .logo {
@@ -31,4 +31,20 @@ body {
 .dropdown_login {
     @apply flex flex-col items-center justify-center gap-5 absolute top-12 right-0 bg-background-black-nav 
         shadow-lg rounded-lg w-48 px-5 py-5 ;
+}
+
+.heading {
+    @apply text-3xl font-extrabold text-text-white;
+}
+
+.divider {
+    @apply w-full border-solid border-text-white border-2;
+}
+
+.body_text {
+    @apply text-xl font-semibold text-text-white;
+}
+
+.fancy_button {
+    @apply bg-gradient-to-r from-warm-blue to-cool-blue text-white px-4 py-2 rounded-md text-base cursor-pointer;
 }

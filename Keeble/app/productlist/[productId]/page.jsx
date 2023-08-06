@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import ProductInfoCard from "@components/ProductInfoCard";
 
 const ProductPage = ({ params }) => {
     const productId = params.productId;
@@ -42,40 +43,8 @@ const ProductPage = ({ params }) => {
 
 
     return (
-        <div className="mx-10 my-10 flex flex-col justify-center items-center gap-10">
-            <div>
-                <Image src={product.imageLink} alt="Product_Image" width={300} height={300} />
-                <h1>{product.name} : </h1>
-                <h3> {product.price} : </h3>
-                <p> {product.description} : </p>
-                <h4> {product.categories}</h4>
-            </div>
-            <div>
-                {reviews.map((review) => {
-                    return (
-                        <div>
-                            <Image 
-                                src={review.user.image} 
-                                alt="UserImage" 
-                                width={50} 
-                                height={50} 
-                                className="rounded-full object-contain" 
-                            />
-                            <h1>{review.user.email}</h1>
-                            <p className="mt-5 text-sm">{review.text}</p>
-                            <p>{review.rating} out of 5</p>
-                            <p className="mt-3"> Posted at: {review.createdAt}</p>
-                            {session?.user.email === review.user.email ? (
-                                <div>
-                                </div>
-                            ): (
-                                <>
-                                </>
-                            )}
-                        </div>
-                    )
-                })}
-            </div>
+        <div className="w-[90%] h-full bg-background-gray mx-5 my-5">
+            <ProductInfoCard product={product} reviewCount={reviews.length} />
         </div>
     )
 }
