@@ -3,17 +3,10 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 const Profile = () => {
     const { data:session } = useSession();
-    const router = useRouter();
-    
-    // Go back to home page if not logged in: 
-    if(!session) {  
-        router.push("/");
-    }
     return (
         <div className=" w-[50%] my-24 bg-grid-black mx-auto rounded-xl py-10 shadow-xl">
             <div className="flex justify-center">
