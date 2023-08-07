@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import BuildProductContainer from "@components/Containers/BuildProductContainer";
+import BuildAssemblyContainer from "@components/Containers/BuildAssemblyContainer";
 import Carousel from "@components/carousel";
 import { useSession } from "next-auth/react";
 
@@ -98,9 +99,9 @@ const ProductBuild = () => {
         };
         const filteredproducts = filterItems(products);
         return (
-            <div className="flex flex-col bg-card-black min-h-[46vh] m-2 p-2 overflow-y-hidden rounded shadow-lg ">
+            <div className="flex flex-col bg-card-black min-h-[48.5vh] m-2 p-2 overflow-y-hidden rounded shadow-lg ">
                 <div className="flex flex-col ">
-                    {text}
+                    <strong className="text-text-white mb-2">{text}</strong>
                     {filters ?
                         <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleFiltersSelection} />
                         : null}
@@ -161,24 +162,23 @@ const ProductBuild = () => {
         return (
             <div className="flex flex-col bg-card-black min-h-[97%] m-2 overflow-y-hidden rounded shadow-lg">
                 {session?.user && <form 
-                    className="flex flex-row justify-between p-2 bg-[#454545]"
+                    className="flex flex-row justify-between p-2 bg-[#454545] items-center"
                     onSubmit={saveBuild}> 
-                    <label>
+                    <label className="w-4/6">
                         <input 
-                            className="grow align-middle m-2 rounded-full indent-3" 
+                            className="grow align-middle m-2 py-1.5 w-full rounded-full indent-3" 
                             type="text" value={buildName} 
                             onChange={(e) => setBuildName(e.target.value)} 
                             placeholder="Name your build..." 
-
                             required/>
                     </label>
-                    <button className="fancy_button" type="submit">Save Build</button>
+                    <button className="fancy_button max-h-[75%] align-middle mr-1.5" type="submit">Save Build</button>
                 </form>}
-                <div className="flex gap-12 mt-3 h-[88%] min-w-full flex-wrap overflow-x-auto justify-center">
+                <div className="flex gap-12 mt-3 mb-3 h-[88%] min-w-full flex-wrap overflow-x-auto justify-center">
                     {products.map((product) => {
                         if (product.addedassembly)
                             return (
-                                <BuildProductContainer className="min-w-[200px] flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc} />
+                                <BuildAssemblyContainer className="flex-shrink-0" product={product} btnaction={"Remove"} btnactionfunc={btnactionfunc}></BuildAssemblyContainer>
                             )
                     })}
                 </div>
