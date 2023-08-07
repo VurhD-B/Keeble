@@ -6,11 +6,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      boxShadow: {
-        'input-box-shadow': "inset 0 10px 7px 0 rgb(0 0 0 / 0.05)"
-      }
-    },
+    extend: {},
     colors: {
       transparent:'transparent',
       'white': '#FFFFFF',

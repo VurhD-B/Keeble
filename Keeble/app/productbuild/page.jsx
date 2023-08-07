@@ -28,6 +28,7 @@ const FilterBar = ({ filters, selected, handleSelection }) => {
                     />
                 )
             })}
+
         </Stack>
     );
 };
@@ -98,7 +99,7 @@ const ProductBuild = () => {
         };
         const filteredproducts = filterItems(products);
         return (
-            <div className="flex flex-col bg-card-black min-h-[46vh] m-2 p-2 overflow-y-hidden rounded shadow-lg ">
+            <div className="flex flex-col bg-card-black min-h-[400px] m-2 p-2 overflow-y-hidden rounded shadow-lg ">
                 <div className="flex flex-col ">
                     {text}
                     {filters ?
@@ -128,7 +129,12 @@ const ProductBuild = () => {
         )
     }
 
-    const AssemblyGrid = ({ products, btnaction, btnactionfunc }) => {
+
+
+
+
+
+    const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
         const {data:session} = useSession();
         const email = session?.user.email;
         const [buildName, setBuildName] = useState("")
@@ -159,22 +165,15 @@ const ProductBuild = () => {
         }
 
         return (
-            <div className="flex flex-col bg-card-black min-h-[97%] m-2 overflow-y-hidden rounded shadow-lg">
-                {session?.user && <form 
-                    className="flex flex-row justify-between p-2 bg-[#454545]"
-                    onSubmit={saveBuild}> 
+            <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
+                {text}
+                {session?.user && <form onSubmit={saveBuild}> 
                     <label>
-                        <input 
-                            className="grow align-middle m-2 rounded-full indent-3" 
-                            type="text" value={buildName} 
-                            onChange={(e) => setBuildName(e.target.value)} 
-                            placeholder="Name your build..." 
-
-                            required/>
+                        <input type="text" value={buildName} onChange={(e) => setBuildName(e.target.value)} placeholder="Name your build..." required/>
                     </label>
                     <button className="fancy_button" type="submit">Save Build</button>
                 </form>}
-                <div className="flex gap-12 mt-3 h-[88%] min-w-full flex-wrap overflow-x-auto justify-center">
+                <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
                         if (product.addedassembly)
                             return (
@@ -218,8 +217,8 @@ const ProductBuild = () => {
                     text="Optional: Choose accessories"
                     btnactionfunc={handleAddToAssembly} />
             </div>
-            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 mr-5 overflow-y-auto">
-                <AssemblyGrid products={products} btnactionfunc={handleAddToAssembly} />
+            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
+                <AssemblyGrid products={products} text="Assembly area" btnactionfunc={handleAddToAssembly} />
             </div>
         </div>
     )

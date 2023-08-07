@@ -31,10 +31,9 @@ const MyBuilds = () => {
 
     if(loading) {
         return(
-            <div className="heading text-center m-36">Loading your builds...</div>
+            <div className="heading text-center m-36">Loading your reviews...</div>
         )
     }
-    
     return (
         <div>
             <div className='text-center mt-10 mb-5 text-2xl font-extrabold text-text-white'>
