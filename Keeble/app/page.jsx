@@ -9,7 +9,7 @@ import TypingText from "@components/TypingText";
 export default function Home() {
   const { data:session } = useSession();
   return (
-    <section className="flex justify-center items-center gap-4 py-10">
+    <section className="flex flex-col justify-center items-center gap-4 py-10">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -19,6 +19,9 @@ export default function Home() {
       >
         <TypingText title="Your Keeb journey starts here.." textStyles="text-center"/>
       </motion.div>
+      <Link href="/guide">
+        <button className="mt-20 fancy_button">Get Started</button>
+      </Link>
     </section>
   )
 }
