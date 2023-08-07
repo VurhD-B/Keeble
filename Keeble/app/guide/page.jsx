@@ -5,8 +5,6 @@ import { useInView } from 'react-intersection-observer';
 import {motion} from 'framer-motion'
 // import motion from 'Keeble/utils/motion.js'
 
-
-
 const BasesInfo = () => {
     const[ref, inView] = useInView({
         triggerOnce: true,
@@ -14,7 +12,8 @@ const BasesInfo = () => {
     })
     const variants = {
         hidden: {x: '-75%'},
-        visible: {x: '0'},
+        visible: {x: '0', transition: { ease: "easeOut" }},
+        exit: { x: '-75%' },
     }
 
     return (
@@ -23,6 +22,7 @@ const BasesInfo = () => {
             className="rounded-lg bg-grid-black mt-10" 
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
+            exit="exit"
             variants={variants}
             transition={{ type: "tween", duration: 0.5 }} >
                 <div className='m-5'>
@@ -36,10 +36,8 @@ const BasesInfo = () => {
                 </div>
 
                 <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-10">
-                    <Box component = 'div' className="overflow-y-auto"
-                        sx={{
-                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                        }}>
+                    <Box component = 'div' className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                        sx={{width:300, height:400, backgroundColor:'#565656', padding:"16px", dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",}}>
                         <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/100%25.jpg"></img><br/>
                         <strong className='block text-center list-none '>Full-Size | 100%</strong><br/>
                         <ul className='text-center list-none'>
@@ -49,9 +47,9 @@ const BasesInfo = () => {
                         </ul>
                         
                     </Box>
-                    <Box className="overflow-y-auto"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
                         sx={{
-                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+                            width:300, height:400, backgroundColor:'#565656', padding:"16px", dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
                             <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/TKL.png"></img><br/>
                         <strong className='block text-center list-none '>Tenkeyless (TKL) [Recommended]</strong><br />
@@ -61,9 +59,9 @@ const BasesInfo = () => {
                             <li>Compact and Well balanced.</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
                         sx={{
-                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
                             <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/75%25.png"></img><br/>
                         <strong className='block text-center list-none '>75%</strong><br />
@@ -73,9 +71,9 @@ const BasesInfo = () => {
                             <li>Gaining in popularity among enthusiast</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
                         sx={{
-                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
                             <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/65%25.png"></img><br/>
                         <strong className='block text-center list-none '>65%</strong><br />
@@ -85,9 +83,9 @@ const BasesInfo = () => {
                             <li>60% keyboard with the arrow keys and other important function keys</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
                         sx={{
-                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+                            width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
                             <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/60%25.jpg"></img><br/>
                         <strong className='block text-center list-none '>60%</strong><br/>
@@ -99,6 +97,156 @@ const BasesInfo = () => {
                     </Box>
                 </Grid>
         </ motion.div>
+    )
+}
+
+const SwitchesInfo = () => {
+    const[ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    })
+    const variants = {
+        hidden: {x: '75%'},
+        visible: {x: '0', transition: { ease: "easeOut" }},
+        exit: { x: '75%' },
+    }
+
+    return (
+        <motion.div 
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        exit="exit"
+        variants={variants}
+        transition={{ type: "tween", duration: 0.5 }} 
+        className='rounded-lg bg-grid-black mt-10'>
+        <div className='m-10'>
+            <strong className='block text-center text-xl'>Switches</strong>
+            <p>
+                The switch is used to register the press of a key on your mechanical keyboard. 
+                There are 3 types of switches - the differences between them lies mainly between the sounds they make, and their actuation force*.
+            </p>
+        </div>
+        <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-20">
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                
+                sx={{
+                    width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                }}>
+                <strong className='block text-center list-none '>Linear</strong><br />
+                <ul className='text-center list-none '>
+                    <li>Closest experience to other normal keyboards.</li>
+                    <li>Same travel force from beginning to end of press, leading to a smooth and consistent feel with minimal clicking sounds.</li>
+                    <li>Preferred by Gamers, Fast Typists due to the lower actuation point</li>
+                </ul>
+            </Box>
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                sx={{
+                    width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                }}>
+                <strong className='block text-center list-none '> Tactile [Recommended]</strong><br />
+                <ul className='text-center list-none '>
+                    <li>Sweet middle ground between clicky and linear switches.</li>
+                    <li>Includes the tactile bump with a softer sound.</li>
+                    <li>Preferred by most keyboard enthusiast.</li>
+                </ul>
+            </Box>
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                sx={{
+                    width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                }}>
+                <strong className='block text-center list-none '>Clicky</strong><br />
+                <ul className='text-center list-none '>
+                    <li>A satisfying click along with a tactile bump with every press.</li>
+                    <li>Often preferred for touch typing.</li>
+                    <li>Can be a little loud for office environments.</li>
+                </ul>
+            </Box>
+        </Grid>
+        <p>*Actuation force is the amount of pressure needed (in g) to register a key press.</p>
+    </motion.div>
+    )
+}
+
+const KeycapsInfo = () => {
+    const[ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    })
+    const variants = {
+        hidden: {x: '-75%'},
+        visible: {x: '0', transition: { ease: "easeOut" }},
+        exit: { x: '-75%' },
+    }
+
+    return (
+        <motion.div 
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        exit="exit"
+        variants={variants}
+        transition={{ type: "tween", duration: 0.5 }} 
+        className='rounded-lg bg-grid-black mt-10'>
+                        <div className='m-10'>
+                <strong className='block text-center text-xl'>Keycaps</strong>
+                <p>
+                    Keycaps cover the switches on your mechanical keyboard, so that you can really customize the design of your keyboard 
+                    (and also so that you're not prodding switches). They come in different materials and profiles.
+                </p>
+            </div>
+            <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-10">
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    sx={{
+                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                    }}>
+                    <strong className='block text-center list-none '>ABS (Acrylonitrile Butadiene Styrene) Material</strong><br />
+                    <ul className='text-center list-none '>
+                        <li>Cheap option with a smooth surface.</li>
+                        <li>Commonly found in pre-built keyboards.</li>
+                        <li>However, they are prone to wear.</li>
+                    </ul>
+                </Box>
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    sx={{
+                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                    }}>
+                    <strong className='block text-center list-none'>PBT (Polybutylene Terephthalate) Material [Recommended] </strong><br />
+                    <ul className='text-center list-none '>
+                        <li>The higher quality option.</li>
+                        <li>Textured surface. </li>
+                        <li>Resistance to oils from fingers.</li>
+                    </ul>
+                </Box>
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    sx={{
+                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                    }}>
+                    <strong className='block text-center list-none '>OEM Profile [Recommended]</strong><br />
+                    <ul className='text-center list-none '>
+                        <li>Low height and slightly curved top.</li>
+                    </ul>
+                </Box>
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    sx={{
+                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                    }}>
+                    <strong className='block text-center list-none '>Cherry Profile [Recommended] </strong><br />
+                    <ul className='text-center list-none '>
+                        <li>Actually very similar to OEM keycaps, but with cylindrical tops to “hug” your finger.</li>
+                    </ul>
+                </Box>
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    sx={{
+                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
+                    }}>
+                    <strong className='block text-center list-none '>DSA Profile</strong><br />
+                    <ul className='text-center list-none '>
+                        <li>Uniform, flat shape.</li>
+                    </ul>
+                </Box>
+            </Grid>
+        </motion.div>
     )
 }
 
@@ -124,112 +272,10 @@ const Guide = () => {
             </p>
 
             <BasesInfo />
+            <SwitchesInfo />
+            <KeycapsInfo />
 
-            <div className='rounded-lg bg-grid-black mt-10'>
-                <div className='m-10'>
-                    <strong className='block text-center text-xl'>Switches</strong>
-                    <p>
-                        The switch is used to register the press of a key on your mechanical keyboard. 
-                        There are 3 types of switches - the differences between them lies mainly between the sounds they make, and their actuation force*.
-                    </p>
-                </div>
-                <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-20">
-                    <Box className="overflow-y-auto"
-                        
-                        sx={{
-                            width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                        }}>
-                        <strong className='block text-center list-none '>Linear</strong><br />
-                        <ul className='text-center list-none '>
-                            <li>Closest experience to other normal keyboards.</li>
-                            <li>Same travel force from beginning to end of press, leading to a smooth and consistent feel with minimal clicking sounds.</li>
-                            <li>Preferred by Gamers, Fast Typists due to the lower actuation point</li>
-                        </ul>
-                    </Box>
-                    <Box className="overflow-y-auto"
-                        sx={{
-                            width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                        }}>
-                        <strong className='block text-center list-none '> Tactile [Recommended]</strong><br />
-                        <ul className='text-center list-none '>
-                            <li>Sweet middle ground between clicky and linear switches.</li>
-                            <li>Includes the tactile bump with a softer sound.</li>
-                            <li>Preferred by most keyboard enthusiast.</li>
-                        </ul>
-                    </Box>
-                    <Box className="overflow-y-auto"
-                        sx={{
-                            width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                        }}>
-                        <strong className='block text-center list-none '>Clicky</strong><br />
-                        <ul className='text-center list-none '>
-                            <li>A satisfying click along with a tactile bump with every press.</li>
-                            <li>Often preferred for touch typing.</li>
-                            <li>Can be a little loud for office environments.</li>
-                        </ul>
-                    </Box>
-                </Grid>
-                <p>*Actuation force is the amount of pressure needed (in g) to register a key press.</p>
-            </div>
 
-            <div className='m-10'>
-                <strong className='block text-center text-xl'>Keycaps</strong>
-                <p>
-                    Keycaps cover the switches on your mechanical keyboard, so that you can really customize the design of your keyboard 
-                    (and also so that you're not prodding switches). They come in different materials and profiles.
-                </p>
-            </div>
-            <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-10">
-                <Box className="overflow-y-auto"
-                    sx={{
-                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                    }}>
-                    <strong className='block text-center list-none '>ABS (Acrylonitrile Butadiene Styrene) Material</strong><br />
-                    <ul className='text-center list-none '>
-                        <li>Cheap option with a smooth surface.</li>
-                        <li>Commonly found in pre-built keyboards.</li>
-                        <li>However, they are prone to wear.</li>
-                    </ul>
-                </Box>
-                <Box className="overflow-y-auto"
-                    sx={{
-                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                    }}>
-                    <strong className='block text-center list-none '>PBT (Polybutylene Terephthalate) Material [Recommended] </strong><br />
-                    <ul className='text-center list-none '>
-                        <li>The higher quality option.</li>
-                        <li>Textured surface. </li>
-                        <li>Resistance to oils from fingers.</li>
-                    </ul>
-                </Box>
-                <Box className="overflow-y-auto"
-                    sx={{
-                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                    }}>
-                    <strong className='block text-center list-none '>OEM Profile [Recommended]</strong><br />
-                    <ul className='text-center list-none '>
-                        <li>Low height and slightly curved top.</li>
-                    </ul>
-                </Box>
-                <Box className="overflow-y-auto"
-                    sx={{
-                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                    }}>
-                    <strong className='block text-center list-none '>Cherry Profile [Recommended] </strong><br />
-                    <ul className='text-center list-none '>
-                        <li>Actually very similar to OEM keycaps, but with cylindrical tops to “hug” your finger.</li>
-                    </ul>
-                </Box>
-                <Box className="overflow-y-auto"
-                    sx={{
-                        width:300, height:300, backgroundColor:'#565656', padding:"16px",  boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-                    }}>
-                    <strong className='block text-center list-none '>DSA Profile</strong><br />
-                    <ul className='text-center list-none '>
-                        <li>Uniform, flat shape.</li>
-                    </ul>
-                </Box>
-            </Grid>
         </div>
     )
 }
