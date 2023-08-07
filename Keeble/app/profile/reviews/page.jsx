@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import ReviewInfoContainer from "@components/ReviewInfoContainer";
+import ReviewInfoContainer from "@components/Cards/ReviewInfoContainer";
 import ReviewForm from "@components/Forms/ReviewForm";
 import { useRouter } from "next/navigation";
 

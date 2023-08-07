@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react';
-import BuildContainer from '@components/BuildContainer';
+import BuildContainer from '@components/Containers/BuildContainer';
 
 const MyBuilds = () => {
     const {data:session} = useSession();

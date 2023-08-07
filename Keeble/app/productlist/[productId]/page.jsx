@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import ProductInfoCard from "@components/ProductInfoCard";
+import ProductInfoCard from "@components/Cards/ProductInfoCard";
 
 const ProductPage = ({ params }) => {
     const productId = params.productId;

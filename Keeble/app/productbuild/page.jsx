@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import BuildProductContainer from "@components/BuildProductContainer";
+import BuildProductContainer from "@components/Containers/BuildProductContainer";
 import Carousel from "@components/carousel";
 
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
