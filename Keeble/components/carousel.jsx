@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 
-const Carousel = ({children}) => {
+const Carousel = ({children, useeffectstate}) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
@@ -27,8 +27,9 @@ const Carousel = ({children}) => {
     }
 
     if (direction === 'next' && carousel.current !== null) {
+      // console.log(carousel.current.offsetWidth * (currentIndex ))
       return (
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
+        carousel.current.offsetWidth * (currentIndex ) >= (maxScrollWidth.current + 200)
       );
     }
 
@@ -96,7 +97,7 @@ const Carousel = ({children}) => {
         </div>
         <div
           ref={carousel}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+          className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
           {/* {data.resources.map((resource, index) => {
             return (

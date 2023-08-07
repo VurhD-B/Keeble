@@ -1,13 +1,15 @@
 'use client';
 import Image from 'next/image'
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import ReviewContainer from '@components/Containers/ReviewContainer';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import Carousel from '@components/carousel';
 
-const ProductInfoCard = ({product}) => {
-    const {data:session} = useSession();
+const ProductInfoCard = ({ product }) => {
+    const { data: session } = useSession();
     const [reviews, setReviews] = useState([]);
+    let useeffectstate = false;
 
     // Fetch the reviews for this particular product:
     useEffect(() => {
@@ -15,12 +17,14 @@ const ProductInfoCard = ({product}) => {
             const response = await fetch(`/api/reviews/${product._id}`);
             const data = await response.json();
             setReviews(data);
+            useeffectstate = true;
         }
         fetchProductReviews();
-    },[product]);
+        
+    }, [product]);
 
     return (
-        <div className='flex px-5 py-5 object-contain'>
+        <div className='flex px-5 py-5 '>
             {/* Left Side of the Card */}
             <div className='flex flex-col justify-center gap-10 w-[50%] ml-10'>
                 <Image src={product.imageLink} width={600} height={400} className='rounded-xl' />
@@ -28,7 +32,7 @@ const ProductInfoCard = ({product}) => {
             </div>
 
             {/* Right Side of the Card */}
-            <div className='w-[50%] flex flex-col items-center gap-10 my-10 mr-10'>
+            <div className='w-[55%] flex flex-col items-center gap-10 my-10 mr-10 overflow-y-hidden'>
                 <h1 className='heading'>{product.name}</h1>
                 <h1 className='text-2xl font-extrabold text-text-white'>${product.price}</h1>
                 <div className='divider'></div>
@@ -45,12 +49,18 @@ const ProductInfoCard = ({product}) => {
                     </Link>)}
                 </div>
                 {/* Review Cards */}
-                <div className='flex justify-center items-center gap-5 mt-5 flex-nowrap'>
-                    {reviews.map((review) => {
-                        return (
-                            <ReviewContainer review={review} />
-                        )
-                    })}
+                <div className="mt-5 w-full gap-5 ">
+                    <Carousel useeffectstate={product}>
+                        {reviews.map((review, index) => {
+                            return (
+                                <div key={index} className="carousel-item text-center relative w-80 snap-start">
+                                    <ReviewContainer  review={review} >
+
+                                    </ReviewContainer>
+                                </div>
+                            )
+                        })}
+                    </Carousel>
                 </div>
             </div>
         </div>
