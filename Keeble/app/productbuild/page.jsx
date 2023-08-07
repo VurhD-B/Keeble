@@ -13,7 +13,7 @@ import Carousel from "@components/carousel";
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
 const switchesFilters = ["Linear", "Tactile", "Clicky"]
 const keycapsFilters = ["ABS", "PBT", "OEM", "Cherry", "DSA"]
-const accessoriesFilters = []
+const accessoriesFilters = ["Cable", "Foam", "Lubricant", "Carrying Case", "Pullers", "Others"]
 
 const FilterBar = ({ filters, selected, handleSelection }) => {
     return (
@@ -109,7 +109,7 @@ const ProductBuild = () => {
             if (selected.length === 0) {
                 return items;
             }
-            return items.filter((product) => selected.some(r => product.categories.includes(r)));
+            return items.filter((product) => selected.every(r => product.categories.includes(r)));
             // return items;
         };
         const filteredproducts = filterItems(products);
