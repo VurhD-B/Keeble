@@ -140,6 +140,7 @@ const ProductBuild = () => {
         const saveBuild = async (e) => {
             e.preventDefault();
             const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
+            
             setSavedBuild(savedProducts);
 
             try {
