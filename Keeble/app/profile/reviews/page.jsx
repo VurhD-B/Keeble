@@ -40,9 +40,9 @@ const MyReviews = () => {
     }
 
     // Handle the edit button being clicked:
-    const handleEdit = async (review) => {
+    const handleEdit = async (reviewToBeEdited) => {
         setEditting(true);
-        setEditReview({text:review.text, rating:review.rating});
+        setEditReview({text:reviewToBeEdited.text, rating:reviewToBeEdited.rating, _id: reviewToBeEdited._id});
 
     }
 
@@ -50,15 +50,16 @@ const MyReviews = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            const response = await fetch(`/api/users/${email}/${review._id}`, {
+            const response = await fetch(`/api/users/${email}/${editreview._id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
-                    text: review.text,
-                    rating: review.rating
+                    text: editreview.text,
+                    rating: editreview.rating
                 })
             });
+            console.log(response.ok);
             if(response.ok) {
-                windows.location.reload();
+                window.location.reload();
             }
         } catch (error) {
             console.log(error);
@@ -73,7 +74,7 @@ const MyReviews = () => {
             <div className="flex gap-10 my-10 mx-10 flex-wrap justify-center">
                 {myReviews.map((review) => {
                     return(
-                        <ReviewInfoContainer review={review} handleEdit={() => handleEdit(review)} />
+                        <ReviewInfoContainer review={review} handleEdit={handleEdit} />
                     )
                 })} 
             </div>

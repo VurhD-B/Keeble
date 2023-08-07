@@ -35,7 +35,7 @@ const ReviewInfoContainer = ({ review, handleEdit }) => {
                 <p className='text-text-white font-normal'>{review.text}</p>
                 <p className='text-text-white font-extrabold'>{review.rating} / 5</p>
                 <div className='flex justify-between mt-5 absolute top-80 gap-10'>
-                    <button className='fancy_button' onClick={() => handleEdit(review._id)}>
+                    <button className='fancy_button' onClick={() => handleEdit(review)}>
                         Edit
                     </button>
                     <button className='delete_button' onClick={() => handleDelete(review._id)}>

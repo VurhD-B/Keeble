@@ -12,8 +12,7 @@ export const DELETE = async (req, {params}) => {
 }
 
 export const PATCH = async (req, {params}) => {
-    const {text, rating} = await req.json;
-
+    const {text, rating} = await req.json();
     try {
         await connectToDB();
         // Find specific review:
