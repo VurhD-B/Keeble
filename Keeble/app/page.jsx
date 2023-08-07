@@ -8,7 +8,7 @@ import TypingText from "@components/TypingText";
 
 export default function Home() {
   const { data:session } = useSession();
-  const backgroundImageUrl = 'https://keeble-sample.s3.ap-southeast-1.amazonaws.com/background.webp';
+  const backgroundImageUrl = 'https://keeble-sample.s3.ap-southeast-1.amazonaws.com/anish-de-xFzG0WlstIk-unsplash.jpg';
   return (
     <section
       className="flex flex-col justify-center items-center gap-4 py-10"
@@ -36,7 +36,7 @@ export default function Home() {
         style={{
           position: 'absolute', // Set the position of the container to absolute
           left: '50%', // Center horizontally
-          bottom: '50%', // Shift the container 20% from the bottom
+          bottom: '35%', // Shift the container 20% from the bottom
           transform: 'translateX(-50%)', // Center the container using translateX
         }}
       >

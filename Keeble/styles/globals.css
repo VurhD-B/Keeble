@@ -53,7 +53,7 @@ body {
 }
 
 .bigfancy_button {
-    @apply bg-gradient-to-r from-warm-blue to-cool-blue text-white px-8 py-4 rounded-full text-base cursor-pointer;
+    @apply bg-gradient-to-r from-[#1FA2FF] to-[#12D8FA] to-[#A6FFCB] text-dull-black px-8 py-4 rounded-full text-base cursor-pointer;
 }
 
 .delete_button {
