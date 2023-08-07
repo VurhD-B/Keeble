@@ -29,6 +29,7 @@ const FilterBar = ({ filters, selected, handleSelection }) => {
                     />
                 )
             })}
+
         </Stack>
     );
 };
@@ -129,7 +130,12 @@ const ProductBuild = () => {
         )
     }
 
-    const AssemblyGrid = ({ products, btnaction, btnactionfunc }) => {
+
+
+
+
+
+    const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
         const {data:session} = useSession();
         const email = session?.user.email;
         const [buildName, setBuildName] = useState("")
@@ -170,6 +176,7 @@ const ProductBuild = () => {
                             type="text" value={buildName} 
                             onChange={(e) => setBuildName(e.target.value)} 
                             placeholder="Name your build..." 
+
                             required/>
                     </label>
                     <button className="fancy_button max-h-[75%] align-middle mr-1.5" type="submit">Save Build</button>
@@ -218,8 +225,8 @@ const ProductBuild = () => {
                     text="Optional: Choose accessories"
                     btnactionfunc={handleAddToAssembly} />
             </div>
-            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 mr-5 overflow-y-auto">
-                <AssemblyGrid products={products} btnactionfunc={handleAddToAssembly} />
+            <div className="flex flex-col bg-grid-black w-[50%] h-[85vh] rounded mt-5 ml-5 overflow-y-auto">
+                <AssemblyGrid products={products} text="Assembly area" btnactionfunc={handleAddToAssembly} />
             </div>
         </div>
     )
