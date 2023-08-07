@@ -1,13 +1,15 @@
 import { connectToDB } from "@utils/database";
 import Build from "@models/build";
+import User from "@models/user";
 
 export const POST = async (req) => {
-    const {name, creator, parts} = await req.json();
+    const {name, email, parts} = await req.json();
     try {
         await connectToDB();
+        const user = User.findOne({email:email});
         const newBuild = new Build({
             name: name,
-            creator: creator,
+            creator: user._id,
             parts: parts,
         });
         await newBuild.save();

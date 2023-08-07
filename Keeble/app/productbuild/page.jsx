@@ -4,6 +4,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import BuildProductContainer from "@components/Containers/BuildProductContainer";
 import Carousel from "@components/carousel";
+import { useSession } from "next-auth/react";
 
 const baseFilters = ["100%", "TKL", "75%", "65%", "60%"]
 const switchesFilters = ["Linear", "Tactile", "Clicky"]
@@ -131,6 +132,8 @@ const ProductBuild = () => {
 
 
     const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
+        const {data:session} = useSession();
+        const email = session?.user.email;
         const [buildName, setBuildName] = useState("")
         const [savedBuild, setSavedBuild] = useState([])
         const savedBuildFormat = [];
