@@ -26,7 +26,7 @@ const ReviewInfoContainer = ({ review, handleEdit }) => {
 
     return (
         <div className='bg-review-box-gray w-[45%] h-[300px] flex rounded-xl shadow-xl
-                        hover:bg-grid-black px-5 py-5'>
+                        hover:bg-grid-black px-5 py-5 relative'>
             <div className='flex gap-5'>
                 <Image src={review.product.imageLink} width={250} height={300} className='rounded-xl' />
             </div>
@@ -34,7 +34,7 @@ const ReviewInfoContainer = ({ review, handleEdit }) => {
                 <h1 className='body_text'>{review.product.name}</h1>
                 <p className='text-text-white font-normal'>{review.text}</p>
                 <p className='text-text-white font-extrabold'>{review.rating} / 5</p>
-                <div className='flex justify-between mt-5 absolute top-80 gap-10'>
+                <div className='flex justify-between mt-5 absolute top-48 gap-10'>
                     <button className='fancy_button' onClick={() => handleEdit(review)}>
                         Edit
                     </button>

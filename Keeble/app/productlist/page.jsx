@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ProductContainer from "@components/ProductContainer";
+import ProductContainer from "@components/Containers/ProductContainer";
 
 const ProductList = () => {
 

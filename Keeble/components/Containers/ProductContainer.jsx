@@ -13,14 +13,6 @@ const ProductContainer = ({ product, btnaction, btnactionfunc }) => {
                 <h1>{product.name}</h1>
                 <h1>{product.categories[0]}</h1>
             </div>
-            <div className="flex flex-col justify-center items-center">
-                <button 
-                className="btn bg-button-blue hover:bg-button-blue-hover rounded-xl p-2" 
-                onClick={() => {
-                    btnactionfunc(product);
-                }}>
-                    {btnaction}</button>
-            </div>
         </div>
     )
 }

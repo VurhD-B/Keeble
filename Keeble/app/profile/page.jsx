@@ -3,10 +3,28 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, signIn, getProviders } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Profile = () => {
     const { data:session } = useSession();
+    const router = useRouter();
+
+    const [providers, setProviders] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            const response = await getProviders();
+            setProviders(response);
+        })
+        // Call the function to getProviders
+        ();
+    }, [])
+
+    const handleSignOut = () => {
+        router.push("/");
+    }
     return (
         <div className=" w-[50%] my-24 bg-grid-black mx-auto rounded-xl py-10 shadow-xl">
             <div className="flex justify-center">
@@ -22,9 +40,6 @@ const Profile = () => {
                 <h1 className="heading">{session?.user.name}</h1>
             </div>
             <div className="flex justify-center align-center gap-3">
-                <Link href="/profile/posts">
-                    <button className="button">My Posts</button>
-                </Link>
                 <Link href="/profile/reviews">
                     <button className="button">My Reviews</button>
                 </Link>
@@ -33,7 +48,24 @@ const Profile = () => {
                 </Link>
             </div>
             <div className="text-center mt-10">
-                <button className="fancy_button" onClick={signOut}>Sign out</button>
+                {session ? (
+                    <button className="fancy_button" onClick={signOut}>Sign out</button>
+                    ) : 
+                    (
+                        <div>
+                            {providers && Object.values(providers).map((provider) => (
+                                <button 
+                                    type="button" 
+                                    key={provider.name} 
+                                    onClick={() => {
+                                        signIn(provider.id);
+                                        }}
+                                    className="fancy_button">
+                                    Sign In
+                                </button>
+                            ))}
+                        </div>
+                )}
             </div>
         </div>
     )

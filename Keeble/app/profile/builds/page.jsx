@@ -39,7 +39,7 @@ const MyBuilds = () => {
             <div className='text-center mt-10 mb-5 text-2xl font-extrabold text-text-white'>
                 My Builds
             </div>
-            <div className='flex justify-center gap-10'>
+            <div className='flex flex-col items-center gap-10'>
                 {myBuilds.map((build) => {
                     return(
                         <BuildContainer build={build} />

@@ -43,7 +43,7 @@ const ProductBuild = () => {
     const [switchesselectedfilters, setSwitchesSelectedFilters] = useState([]);
     const accessories = products.filter((product) => product.categories[0] === "Accessories")
     const [accessoriesselectedfilters, setAccessoriesSelectedFilters] = useState([]);
-
+    
     //adds a selected product to Assembly Area
     const handleAddToAssembly = (currentproduct) => {
         const category = currentproduct.categories[0];
@@ -55,7 +55,10 @@ const ProductBuild = () => {
             setProducts(nextProducts);
         } else {
             const nextProducts = products.map((product) =>
-                product.categories[0] === category ? { ...product, addedassembly: product._id === currentproduct._id } : product
+                product.categories[0] === category ? 
+                product._id === currentproduct._id ? { ...product, addedassembly: !product.addedassembly } 
+                : { ...product, addedassembly: product._id === currentproduct._id } 
+                : product
             );
             setProducts(nextProducts);
         }
@@ -136,30 +139,40 @@ const ProductBuild = () => {
         const email = session?.user.email;
         const [buildName, setBuildName] = useState("")
         const [savedBuild, setSavedBuild] = useState([])
-        const savedBuildFormat = [];
-
-        const saveBuild = (e) => {
+        
+        const saveBuild = async (e) => {
             e.preventDefault();
             const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
             
             setSavedBuild(savedProducts);
 
-            savedBuildFormat.push(/*user id*/);
-            savedBuildFormat.push(savedProducts, buildName);
-console.log(savedBuildFormat)
-            setBuildName('');
-        };
-
+            try {
+                const response = await fetch('api/builds/new', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: buildName,
+                        email: email,
+                        parts: savedProducts
+                    })
+                })
+                if(response.ok) {
+                    alert('The build has been sucessfully saved');
+                    window.location.reload();
+                }
+            } catch(error) {
+                console.log(error);
+            }
+        }
 
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
-                <form onSubmit={saveBuild}> 
+                {session?.user && <form onSubmit={saveBuild}> 
                     <label>
                         <input type="text" value={buildName} onChange={(e) => setBuildName(e.target.value)} placeholder="Name your build..." required/>
                     </label>
                     <button className="fancy_button" type="submit">Save Build</button>
-                </form>
+                </form>}
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
                         if (product.addedassembly)

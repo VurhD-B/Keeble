@@ -57,11 +57,6 @@ const Nav = () => {
                         Products
                     </h2>
                 </Link>
-                <Link href="/posts">
-                    <h2 className={`head_text_md ${pathname === '/posts' ? 'font-bold text-2xl' : 'font-normal text-xl'}`} >
-                        Posts
-                    </h2>
-                </Link>
             </div>
 
             {/* The sign in feature UI */ }
