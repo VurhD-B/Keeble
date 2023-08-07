@@ -137,15 +137,19 @@ const ProductBuild = () => {
         const [buildName, setBuildName] = useState("")
         const [savedBuild, setSavedBuild] = useState([])
         const savedBuildFormat = [];
-        
+
         const saveBuild = (e) => {
             e.preventDefault();
             const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
+            
             setSavedBuild(savedProducts);
-            savedBuildFormat.push(/*user id*/)
-            savedBuildFormat.push(savedBuild, buildName)
-            setBuildName('')
-        }
+
+            savedBuildFormat.push(/*user id*/);
+            savedBuildFormat.push(savedProducts, buildName);
+console.log(savedBuildFormat)
+            setBuildName('');
+        };
+
 
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
