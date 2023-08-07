@@ -42,6 +42,7 @@ const Guide = () => {
                         <li>104 keys, everything included, from the number pad to modifiers and the arrow cluster</li>
                         <li>Good for lots of number entry.</li>
                     </ul>
+                    <img src="100%.jpg" width={200} height={100} alt='Failed to load image'></img>
                 </Box>
                 <Box className="overflow-y-auto"
                     sx={{

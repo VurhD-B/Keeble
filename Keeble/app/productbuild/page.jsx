@@ -1,10 +1,5 @@
 'use client';
 import { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import BuildProductContainer from "@components/BuildProductContainer";
@@ -34,35 +29,6 @@ const FilterBar = ({ filters, selected, handleSelection }) => {
             })}
 
         </Stack>
-    );
-};
-
-const AssemblyItem = ({ product }) => {
-    const handleBuy = () => {
-        window.alert("redirected to seller");
-    };
-
-    return (
-        <div className="flex flex-row items-center">
-            <Card className="w-full h-[140px] flex flex-row justify-center items-center text-center">
-                <CardMedia
-                    component="img"
-                    sx={{ height: 140 }}
-                    image={product.imageLink}
-                    title="dummy-image"
-                />
-                <div className="flex flex-col items-center text-center">
-                    <CardContent>
-                        <Typography variant="h7">{product.name}</Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small" color="primary" onClick={handleBuy}>
-                            Buy One
-                        </Button>
-                    </CardActions>
-                </div>
-            </Card>
-        </div>
     );
 };
 
@@ -159,10 +125,33 @@ const ProductBuild = () => {
         )
     }
 
+    const [buildName, setBuildName] = useState("")
+    const [savedBuild, setSavedBuild] = useState([])
+    const savedBuildFormat = [];
+
+    const handleChange = (event) => {
+        setBuildName(event.target.value);
+    };
+
+    const saveBuild = (e) => {
+        e.preventDefault();
+        const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
+        setSavedBuild(savedProducts);
+        savedBuildFormat.push(/*user id*/)
+        savedBuildFormat.push(savedBuild, buildName)
+        setBuildName('')
+    }
+
     const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
+                <form onSubmit={saveBuild}> 
+                    <label>
+                        <input type="text" value={name} onChange={handleChange} placeholder="Name your build..." required/>
+                    </label>
+                    <button type="submit">Save</button>
+                </form>
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
                         if (product.addedassembly)
