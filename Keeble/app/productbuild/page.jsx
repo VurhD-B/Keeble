@@ -164,12 +164,12 @@ const ProductBuild = () => {
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
-                <form onSubmit={saveBuild}> 
+                {session?.user && <form onSubmit={saveBuild}> 
                     <label>
                         <input type="text" value={buildName} onChange={(e) => setBuildName(e.target.value)} placeholder="Name your build..." required/>
                     </label>
                     <button className="fancy_button" type="submit">Save Build</button>
-                </form>
+                </form>}
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
                         if (product.addedassembly)
