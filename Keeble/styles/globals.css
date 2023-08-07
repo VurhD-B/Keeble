@@ -16,8 +16,7 @@ body {
 }
 
 .button{
-    @apply rounded-full border  bg-button-grey py-1.5 px-5 text-lg
-        text-titan-white transition-all hover:bg-dull-black;
+    @apply rounded-full border  bg-button-grey py-1.5 px-5 text-lg text-titan-white transition-all hover:bg-dull-black;
 }
 
 .logo {
