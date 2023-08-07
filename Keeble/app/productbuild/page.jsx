@@ -43,7 +43,7 @@ const ProductBuild = () => {
     const [switchesselectedfilters, setSwitchesSelectedFilters] = useState([]);
     const accessories = products.filter((product) => product.categories[0] === "Accessories")
     const [accessoriesselectedfilters, setAccessoriesSelectedFilters] = useState([]);
-
+    
     //adds a selected product to Assembly Area
     const handleAddToAssembly = (currentproduct) => {
         const category = currentproduct.categories[0];
@@ -55,7 +55,10 @@ const ProductBuild = () => {
             setProducts(nextProducts);
         } else {
             const nextProducts = products.map((product) =>
-                product.categories[0] === category ? { ...product, addedassembly: product._id === currentproduct._id } : product
+                product.categories[0] === category ? 
+                product._id === currentproduct._id ? { ...product, addedassembly: !product.addedassembly } 
+                : { ...product, addedassembly: product._id === currentproduct._id } 
+                : product
             );
             setProducts(nextProducts);
         }
