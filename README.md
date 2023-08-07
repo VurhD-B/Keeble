@@ -7,7 +7,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 2. Access the website through the localhost by cloning the repository and then following the steps below
 
 
-First enter, the Keeble Directory 
+First enter the Keeble Directory 
 
 ```cd Keeble```
 
