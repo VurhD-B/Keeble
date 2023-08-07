@@ -1,8 +1,5 @@
 'use client';
 
-import Image from "next/image";
-import Button from '@mui/material/Button';
-
 const ProductContainer = ({ children, product, btnaction, btnactionfunc }) => {
     return (
         <div className='flex flex-col gap-2 bg-box-gray w-60 h-72 max-h-100 max-w-96 overflow-hidden rounded-xl
@@ -12,7 +9,6 @@ const ProductContainer = ({ children, product, btnaction, btnactionfunc }) => {
             </div>
             <div className="flex flex-col mt-2 justify-center items-center">
                 <h1>{product.name}</h1>
-                {/* <h1>{product.categories[0]}</h1> */}
             </div>
             <div className="flex flex-col justify-center items-center">
                 {

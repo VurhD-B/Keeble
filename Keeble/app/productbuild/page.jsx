@@ -68,16 +68,30 @@ const AssemblyItem = ({ product }) => {
 
 const ProductBuild = () => {
     const [products, setProducts] = useState([]);
+    const bases = products.filter((product) => product.categories[0] === "Base")
+    const [baseselectedfilters, setBaseSelectedFilters] = useState([]);
+    const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
+    const [keycapsselectedfilters, setKeycapsSelectedFilters] = useState([]);
+    const switches = products.filter((product) => product.categories[0] === "Switches")
+    const [switchesselectedfilters, setSwitchesSelectedFilters] = useState([]);
+    const accessories = products.filter((product) => product.categories[0] === "Accessories")
+    const [accessoriesselectedfilters, setAccessoriesSelectedFilters] = useState([]);
 
-
+    //adds a selected product to Assembly Area
     const handleAddToAssembly = (currentproduct) => {
-        const nextProducts = products.map((product) => {
-            if (product._id === currentproduct._id) {
-                product.addedassembly = !product.addedassembly;
-            }
-            return product;
-        });
-        setProducts(nextProducts);
+        const category = currentproduct.categories[0];
+
+        if (category === "Accessories") {
+            const nextProducts = products.map((product) =>
+                product._id === currentproduct._id ? { ...product, addedassembly: !product.addedassembly } : product
+            );
+            setProducts(nextProducts);
+        } else {
+            const nextProducts = products.map((product) =>
+                product.categories[0] === category ? { ...product, addedassembly: product._id === currentproduct._id } : product
+            );
+            setProducts(nextProducts);
+        }
     };
 
     // Fetching the products from DB:
@@ -93,7 +107,8 @@ const ProductBuild = () => {
     }, []); // The products should be in the products variable
 
     const ProductGrid = ({ filters, products, text, btnaction, btnactionfunc, selected, setSelected }) => {
-        const handleSelection = (filter) => {
+        //handles filter bar filters
+        const handleFiltersSelection = (filter) => {
             const isSelected = selected.includes(filter);
             if (isSelected) {
                 setSelected(
@@ -118,7 +133,7 @@ const ProductBuild = () => {
                 <div className="flex flex-col ">
                     {text}
                     {filters ?
-                        <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleSelection} />
+                        <FilterBar className="sticky" filters={filters} selected={selected} handleSelection={handleFiltersSelection} />
                         : null}
                 </div>
                 <div className="gap-3 mt-4 w-full">
@@ -127,7 +142,6 @@ const ProductBuild = () => {
                             return (
                                 <div className="carousel-item text-center relative w-72 h-full snap-start">
                                     <BuildProductContainer
-                                        
                                         product={product}
                                         btnaction={product.addedassembly ? "Added" : "Add"}
                                         btnactionfunc={btnactionfunc}>
@@ -136,7 +150,6 @@ const ProductBuild = () => {
 
                             )
                         })}
-
                     </Carousel>
                 </div>
 
@@ -161,15 +174,6 @@ const ProductBuild = () => {
             </div>
         )
     }
-
-    const bases = products.filter((product) => product.categories[0] === "Base")
-    const [baseselectedfilters, setBaseSelectedFilters] = useState([]);
-    const keycaps = products.filter((product) => product.categories[0] === "Keycaps")
-    const [keycapsselectedfilters, setKeycapsSelectedFilters] = useState([]);
-    const switches = products.filter((product) => product.categories[0] === "Switches")
-    const [switchesselectedfilters, setSwitchesSelectedFilters] = useState([]);
-    const accessories = products.filter((product) => product.categories[0] === "Accessories")
-    const [accessoriesselectedfilters, setAccessoriesSelectedFilters] = useState([]);
 
     return (
         <div className="flex flex-row">
