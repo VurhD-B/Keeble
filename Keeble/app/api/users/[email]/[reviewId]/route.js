@@ -10,3 +10,23 @@ export const DELETE = async (req, {params}) => {
         return new Response('Error deleting review', {status: 500});
     }
 }
+
+export const PATCH = async (req, {params}) => {
+    const {text, rating} = await req.json;
+
+    try {
+        await connectToDB();
+        // Find specific review:
+        const existingReview = await Review.findById(params.reviewId);
+        if(!existingReview) {
+            return new Response('Failed to find review', {status: 404});
+        }
+
+        existingReview.text = text;
+        existingReview.rating = rating;
+        await existingReview.save();
+        return new Response('Successfully updated review', {status: 200});
+    } catch (error) {
+        return new Response('Failed to edit and update review', {status: 500});
+    }
+}
