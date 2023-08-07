@@ -2,22 +2,30 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, enter the Keeble directory 
+### Users can access the website in 2 ways
+1. Access the website through the url: https://team-21-project-onmlhnljv-team-21.vercel.app/
+2. Access the website through the localhost by cloning the repository and then following the steps below
+
+
+First enter, the Keeble Directory 
 
 ```cd Keeble```
 
-Add a .env file
+Create a .env file under Keeble and add the following code to it
 
-```bash
-echo "GOOGLE_ID=595522764018-3r6u21rmu1dnmg3ntqmtolb3hhc4cfq4.apps.googleusercontent.com
+```
+GOOGLE_ID=595522764018-3r6u21rmu1dnmg3ntqmtolb3hhc4cfq4.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
 MONGODB_URI=mongodb+srv://benegaldhruv2312:xX9WWNQIsZDJmt4H@cluster0.rnktlbi.mongodb.net/?retryWrites=true&w=majority
+
 UPLOADTHING_SECRET=sk_live_6f9a7f8f89d445b79126a9ce25c5260464ba85cc33a7033cf232926b7d1d8488
 UPLOADTHING_APP_ID=oxtkpt1thr
+
 NEXTAUTH_URL=http://localhost:3000/
 NEXTAUTH_URL_INTERNAL=http://localhost:3000/
-NEXTAUTH_SECRET=4k4ZTGg/fO4Jqn4YOenKxRFZ6S4D+fBCpOgxPul1vZs=" > .env
+NEXTAUTH_SECRET=4k4ZTGg/fO4Jqn4YOenKxRFZ6S4D+fBCpOgxPul1vZs=
 ```
+
 
 Install dependencies
 
