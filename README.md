@@ -64,7 +64,8 @@ By logging in, users can then gain access to more features offered by this websi
 Access by clicking on "Build" at the top of the page.
 Users can look through the products available on the left and and filter them based on the filters tags provided per category. 
 They can then add the products with the "Add" button to add it to the assembly area on the right. 
-Users can add the products and save their builds.
+Users can add the products and save their builds. 
+Once the product is in the assembly area, users can choose to buy the product or to delete it from the assembly area.
 DO NOTE that users have to be logged in to their google account to save builds.
 
 
