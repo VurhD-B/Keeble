@@ -22,9 +22,6 @@ const Profile = () => {
                 <h1 className="heading">{session?.user.name}</h1>
             </div>
             <div className="flex justify-center align-center gap-3">
-                <Link href="/profile/posts">
-                    <button className="button">My Posts</button>
-                </Link>
                 <Link href="/profile/reviews">
                     <button className="button">My Reviews</button>
                 </Link>

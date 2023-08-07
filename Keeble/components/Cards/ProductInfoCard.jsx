@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
-import ReviewContainer from './ReviewContainer';
+import ReviewContainer from '@components/Containers/ReviewContainer';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
