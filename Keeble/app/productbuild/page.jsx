@@ -136,15 +136,28 @@ const ProductBuild = () => {
         const email = session?.user.email;
         const [buildName, setBuildName] = useState("")
         const [savedBuild, setSavedBuild] = useState([])
-        const savedBuildFormat = [];
         
-        const saveBuild = (e) => {
+        const saveBuild = async (e) => {
             e.preventDefault();
             const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
             setSavedBuild(savedProducts);
-            savedBuildFormat.push(/*user id*/)
-            savedBuildFormat.push(savedBuild, buildName)
-            setBuildName('')
+
+            try {
+                const response = await fetch('api/builds/new', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: buildName,
+                        email: email,
+                        parts: savedProducts
+                    })
+                })
+                if(response.ok) {
+                    alert('The build has been sucessfully saved');
+                    window.location.reload();
+                }
+            } catch(error) {
+                console.log(error);
+            }
         }
 
         return (
