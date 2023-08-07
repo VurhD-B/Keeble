@@ -151,7 +151,7 @@ const ProductBuild = () => {
                     <label>
                         <input type="text" value={buildName} onChange={(e) => setBuildName(e.target.value)} placeholder="Name your build..." required/>
                     </label>
-                    <button className="rounded-md bg-cool-red p-1 ml-2" type="submit">Save Build</button>
+                    <button className="fancy_button" type="submit">Save Build</button>
                 </form>
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
