@@ -6,8 +6,9 @@ import User from "@models/user";
 export const GET = async (req, { params }) => {
     try {
         await connectToDB();
+        console.log(params.email);
         const user = await User.findOne({email: params.email});
-        const myBuilds = await Build.find({user: user._id}).populate("parts");
+        const myBuilds = await Build.find({creator: user._id}).populate("parts");
         return new Response(JSON.stringify(myBuilds), {status: 200});
     } catch (error) {
         return new Response('Failed to fetch your builds', {status: 500});
