@@ -2,12 +2,13 @@ import { connectToDB } from "@utils/database";
 import Build from "@models/build";
 
 export const POST = async (req) => {
-    const {creator, parts} = await req.json();
+    const {name, creator, parts} = await req.json();
     try {
         await connectToDB();
         const newBuild = new Build({
+            name: name,
             creator: creator,
-            parts: parts
+            parts: parts,
         });
         await newBuild.save();
         return new Response(JSON.stringify(newBuild, {status: 201}));

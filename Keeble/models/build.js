@@ -1,6 +1,10 @@
 import { Schema, models, model } from "mongoose";
 
 const BuildSchema = new Schema({
+    name : {
+        type: String,
+        required: true,
+    },
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
