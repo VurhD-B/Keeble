@@ -36,7 +36,7 @@ const BasesInfo = () => {
                 </div>
 
                 <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-10">
-                    <Box component = 'div' className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    <Box component = 'div' className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                         sx={{width:300, height:400, backgroundColor:'#565656', padding:"16px", dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",}}>
                         <img className="" src="https://keeble-sample.s3.ap-southeast-1.amazonaws.com/Bases/100%25.jpg"></img><br/>
                         <strong className='block text-center list-none '>Full-Size | 100%</strong><br/>
@@ -47,7 +47,7 @@ const BasesInfo = () => {
                         </ul>
                         
                     </Box>
-                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                         sx={{
                             width:300, height:400, backgroundColor:'#565656', padding:"16px", dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
@@ -59,7 +59,7 @@ const BasesInfo = () => {
                             <li>Compact and Well balanced.</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                         sx={{
                             width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
@@ -71,7 +71,7 @@ const BasesInfo = () => {
                             <li>Gaining in popularity among enthusiast</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                         sx={{
                             width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
@@ -83,7 +83,7 @@ const BasesInfo = () => {
                             <li>60% keyboard with the arrow keys and other important function keys</li>
                         </ul>
                     </Box>
-                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                    <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                         sx={{
                             width:300, height:400, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                         }}>
@@ -128,7 +128,7 @@ const SwitchesInfo = () => {
             </p>
         </div>
         <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-20">
-            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                 
                 sx={{
                     width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
@@ -140,7 +140,7 @@ const SwitchesInfo = () => {
                     <li>Preferred by Gamers, Fast Typists due to the lower actuation point</li>
                 </ul>
             </Box>
-            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                 sx={{
                     width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                 }}>
@@ -151,7 +151,7 @@ const SwitchesInfo = () => {
                     <li>Preferred by most keyboard enthusiast.</li>
                 </ul>
             </Box>
-            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+            <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                 sx={{
                     width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                 }}>
@@ -162,8 +162,18 @@ const SwitchesInfo = () => {
                     <li>Can be a little loud for office environments.</li>
                 </ul>
             </Box>
+            <iframe
+                    width="600"                         
+                    height="350" 
+                    src="https://www.youtube.com/embed/rm-WuK_9OBM" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
         </Grid>
-        <p>*Actuation force is the amount of pressure needed (in g) to register a key press.</p>
+        
+        
+        <p className='m-2'>*Actuation force is the amount of pressure needed (in g) to register a key press.</p>
     </motion.div>
     )
 }
@@ -196,7 +206,7 @@ const KeycapsInfo = () => {
                 </p>
             </div>
             <Grid container rowSpacing={2} columnSpacing={2} className="justify-center list-none  mb-20 mt-8 gap-10">
-                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                     sx={{
                         width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                     }}>
@@ -207,7 +217,7 @@ const KeycapsInfo = () => {
                         <li>However, they are prone to wear.</li>
                     </ul>
                 </Box>
-                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                     sx={{
                         width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                     }}>
@@ -218,7 +228,7 @@ const KeycapsInfo = () => {
                         <li>Resistance to oils from fingers.</li>
                     </ul>
                 </Box>
-                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                     sx={{
                         width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                     }}>
@@ -227,19 +237,21 @@ const KeycapsInfo = () => {
                         <li>Low height and slightly curved top.</li>
                     </ul>
                 </Box>
-                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                     sx={{
                         width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                     }}>
+                    <img className="" src="/cherryprofile.JPG"></img><br/>
                     <strong className='block text-center list-none '>Cherry Profile [Recommended] </strong><br />
                     <ul className='text-center list-none '>
                         <li>Actually very similar to OEM keycaps, but with cylindrical tops to “hug” your finger.</li>
                     </ul>
                 </Box>
-                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] hover:rounded-xl rounded-sm"
+                <Box className="overflow-y-auto hover:shadow-2xl hover:bg-[#676767] rounded-md hover:rounded-xl"
                     sx={{
                         width:300, height:300, backgroundColor:'#565656', padding:"16px",  dropShadow:"filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))", borderRadius: "0.125rem",
                     }}>
+                    <img height="125" src="/dsaprofile.JPG"></img><br/>
                     <strong className='block text-center list-none '>DSA Profile</strong><br />
                     <ul className='text-center list-none '>
                         <li>Uniform, flat shape.</li>
@@ -253,8 +265,8 @@ const KeycapsInfo = () => {
 const Guide = () => {
     return (
         <div className="text-text-white flex flex-col p-10">
-            <h5 className='place-self-center list-none  mb-3'><b>What is going on in the Build Page?</b></h5>
-            <p>
+            <h5 className='place-self-center list-none text-[1.75rem] mb-3'><b>What is going on in the Build Page?</b></h5>
+            <p className='text-[1.2rem]'>
                 The Build page helps you make your own mechanical keyboard using parts recommended by us! 
                 The page takes you through a bunch of steps that one could take to make their own mechanical keyboard.<br />
                 On the left side, is a list of products by parts. With the help of our filters, 
@@ -266,8 +278,8 @@ const Guide = () => {
             <img className="place-self-center list-none  mt-10" src="/buildguide1.png" width="500" height="600"></img>
 
 
-            <h5 className='place-self-center list-none  mt-20 mb-3'><b>I'm completely new to this. I want to know what the parts are!</b></h5>
-            <p className='mb-10'>
+            <h5 className='place-self-center list-none text-[1.75rem] mt-20 mb-3 '><b>I'm completely new to this. I want to know what the parts are!</b></h5>
+            <p className='mb-10 text-[1.2rem]'>
                 The anatomy of a mechanical keyboard is quite complex. To keep things simple, let's narrow it down to its three main parts:
             </p>
 
