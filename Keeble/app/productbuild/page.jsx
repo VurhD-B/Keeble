@@ -125,32 +125,33 @@ const ProductBuild = () => {
         )
     }
 
-    const [buildName, setBuildName] = useState("")
-    const [savedBuild, setSavedBuild] = useState([])
-    const savedBuildFormat = [];
 
-    const handleChange = (event) => {
-        setBuildName(event.target.value);
-    };
 
-    const saveBuild = (e) => {
-        e.preventDefault();
-        const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
-        setSavedBuild(savedProducts);
-        savedBuildFormat.push(/*user id*/)
-        savedBuildFormat.push(savedBuild, buildName)
-        setBuildName('')
-    }
+
+
 
     const AssemblyGrid = ({ products, text, btnaction, btnactionfunc }) => {
+        const [buildName, setBuildName] = useState("")
+        const [savedBuild, setSavedBuild] = useState([])
+        const savedBuildFormat = [];
+        
+        const saveBuild = (e) => {
+            e.preventDefault();
+            const savedProducts = products.filter((product) => product.addedassembly).map((product) => product._id);
+            setSavedBuild(savedProducts);
+            savedBuildFormat.push(/*user id*/)
+            savedBuildFormat.push(savedBuild, buildName)
+            setBuildName('')
+        }
+
         return (
             <div className="flex flex-col bg-card-black min-h-[300px] m-2 p-2 overflow-y-hidden rounded shadow-lg">
                 {text}
                 <form onSubmit={saveBuild}> 
                     <label>
-                        <input type="text" value={name} onChange={handleChange} placeholder="Name your build..." required/>
+                        <input type="text" value={buildName} onChange={(e) => setBuildName(e.target.value)} placeholder="Name your build..." required/>
                     </label>
-                    <button type="submit">Save</button>
+                    <button className="rounded-md bg-cool-red p-1 ml-2" type="submit">Save Build</button>
                 </form>
                 <div className="flex flex-col gap-3 mt-4 min-h-full min-w-full flex-wrap overflow-x-auto">
                     {products.map((product) => {
