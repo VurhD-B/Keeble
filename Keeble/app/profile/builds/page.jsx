@@ -31,7 +31,7 @@ const MyBuilds = () => {
 
     if(loading) {
         return(
-            <div className="heading text-center m-36">Loading your reviews...</div>
+            <div className="heading text-center m-36">Loading your builds...</div>
         )
     }
     return (
