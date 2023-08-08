@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 ### Users can access the website in 2 ways
-1. Access the website through the url: https://team-21-project-onmlhnljv-team-21.vercel.app/
+1. Access the website through the URL: (https://team-21-project.vercel.app/)
 2. Access the website through the localhost by cloning the repository and then following the steps below
 
 
