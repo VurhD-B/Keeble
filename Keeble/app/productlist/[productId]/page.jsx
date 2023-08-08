@@ -13,9 +13,13 @@ const ProductPage = ({ params }) => {
     // Fetch the information about the (individual) product:
     useEffect( () => {
         const fetchProduct = async () => {
-            const response = await fetch(`/api/products/${productId}`);
-            const data = await response.json();
-            setProduct(data);
+            try {
+                const response = await fetch(`/api/products/${productId}`);
+                const data = await response.json();
+                setProduct(data);
+            } catch (error) {
+                console.log(error);
+            }
         }
         fetchProduct();
     }, [productId]);
@@ -25,9 +29,7 @@ const ProductPage = ({ params }) => {
         return (
             <div>Loading...</div>
         )
-    }
-
-    return (
+    } else return (
         <div className="w-[97%] h-full bg-background-gray mx-5 my-5 rounded-lg shadow-2xl">
             <ProductInfoCard product={product} />
         </div>

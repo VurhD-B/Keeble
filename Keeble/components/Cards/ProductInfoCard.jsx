@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image'
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReviewContainer from '@components/Containers/ReviewContainer';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
@@ -14,10 +14,14 @@ const ProductInfoCard = ({ product }) => {
     // Fetch the reviews for this particular product:
     useEffect(() => {
         const fetchProductReviews = async () => {
-            const response = await fetch(`/api/reviews/${product._id}`);
-            const data = await response.json();
-            setReviews(data);
-            useeffectstate = true;
+            try {
+                const response = await fetch(`/api/reviews/${product._id}`);
+                const data = await response.json();
+                setReviews(data);
+                useeffectstate = true;
+            } catch(error) {
+                console.log(error);
+            }
         }
         fetchProductReviews();
         
@@ -54,9 +58,7 @@ const ProductInfoCard = ({ product }) => {
                         {reviews.map((review, index) => {
                             return (
                                 <div key={index} className="carousel-item text-center relative w-80 snap-start">
-                                    <ReviewContainer  review={review} >
-
-                                    </ReviewContainer>
+                                    <ReviewContainer  review={review} />
                                 </div>
                             )
                         })}
