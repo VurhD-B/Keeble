@@ -11,22 +11,6 @@ First enter the Keeble Directory
 
 ```cd Keeble```
 
-Create a .env file under Keeble and add the following code to it
-
-```
-GOOGLE_ID=595522764018-3r6u21rmu1dnmg3ntqmtolb3hhc4cfq4.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=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
-MONGODB_URI=mongodb+srv://benegaldhruv2312:xX9WWNQIsZDJmt4H@cluster0.rnktlbi.mongodb.net/?retryWrites=true&w=majority
-
-UPLOADTHING_SECRET=sk_live_6f9a7f8f89d445b79126a9ce25c5260464ba85cc33a7033cf232926b7d1d8488
-UPLOADTHING_APP_ID=oxtkpt1thr
-
-NEXTAUTH_URL=http://localhost:3000/
-NEXTAUTH_URL_INTERNAL=http://localhost:3000/
-NEXTAUTH_SECRET=4k4ZTGg/fO4Jqn4YOenKxRFZ6S4D+fBCpOgxPul1vZs=
-```
-
-
 Install dependencies
 
 ```bash
