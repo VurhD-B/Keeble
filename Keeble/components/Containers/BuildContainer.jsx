@@ -1,6 +1,7 @@
 'use client';
 
 import ProductContainer from "./ProductContainer";
+import Link from "next/link";
 
 const BuildContainer = ({build}) => {
 
@@ -27,7 +28,9 @@ const BuildContainer = ({build}) => {
             <div className="flex py-5 gap-5">
                 {build.parts.map((product) => {
                     return(
-                        <ProductContainer product={product} />
+                        <Link href={`/productlist/${product._id}`}>
+                            <ProductContainer product={product} />
+                        </Link>
                     )
                 })}
             </div>
