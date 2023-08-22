@@ -6,6 +6,7 @@ import { staggerContainer } from "@utils/motion";
 import TypingText from "@components/TypingText";
 
 
+
 export default function Home() {
   const { data:session } = useSession();
   const backgroundImageUrl = 'https://keeble-sample.s3.ap-southeast-1.amazonaws.com/anish-de-xFzG0WlstIk-unsplash.jpg';
